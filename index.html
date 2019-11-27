@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Shop Item - Start Bootstrap Template</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/shop-item.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eeffa2;">
+    <div class="container">
+      <a class="navbar-brand" href="#" style="font-size: 3ch;">
+        <img class="img-fluid" width="30" height="30" src="logo.png">
+        Gruszka.net
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Sklep
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="onas.html">O nas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="kontakt.html">Kontakt</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logowanie.html">Zaloguj się</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Produkty -->
+  <div class="container">
+
+    <div class="row">
+      <!--Kategorie-->
+      <div class="col-lg-3">
+        <h1 class="my-4">Kategorie</h1>
+        <div class="list-group">
+          <a href="#f" class="list-group-item active" style="background-color: #7d9801;border: #7d9801;">Komputery</a>
+          <a href="#f" class="list-group-item" style="color: #6c8500">Telewizory</a>
+          <a href="#f" class="list-group-item"style="color: #6c8500">Smartfony</a>
+          <a href="#f" class="list-group-item"style="color: #6c8500">Drukarki</a>
+          <a href="#f" class="list-group-item"style="color: #6c8500">Akcesoria</a>
+        </div>
+      </div>
+      <!--Produkty-->
+
+      <div class="col-lg-9">
+      <!--Zdjęcie i opis produktu-->
+        <div class="card my-4">
+          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <div class="card-body">
+            <h3 class="card-title">Nazwa produktu</h3>
+            <h4>1299.99 zł</h4>
+            <h6 class="mt-4">Opis:</h6>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+          </div>
+          
+          <div class="d-flex button-group justify-content-between">
+            <!--Button Pokaż recenzje-->
+            <button class="btn btn-primary col-3 m-2" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+              Opinie o produkcie
+            </button>
+            <!--Button wystaw recenzje-->
+            <button class="btn btn-success col-3 m-2" type="button"data-toggle="modal" data-target="#formModal">
+                Wystaw opinię
+            </button>
+            <div class="modal" tabindex="-1" role="dialog" id="formModal">
+              <form>
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Napisz swoją opinię</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Wyślij opinię</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              </form>
+          </div> 
+
+          <div class="collapse" id="collapse1">
+            
+            <div class="card-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            </div>
+
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Gruszka.net 2019</p>
+    </div>
+  </footer>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
