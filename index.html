@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Shop Item - Start Bootstrap Template</title>
+  <title>Gruszka</title>
 
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-item.css" rel="stylesheet">
@@ -43,6 +43,9 @@
           <li class="nav-item">
             <a class="nav-link" href="logowanie.html">Zaloguj się</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="koszyk.html"><i class="fas fa-shopping-cart"></i></a>
+            </li>
         </ul>
       </div>
     </div>
@@ -70,7 +73,14 @@
         <div class="card my-4">
           <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
           <div class="card-body">
-            <h3 class="card-title">Nazwa produktu</h3>
+            <div class="d-flex justify-content-between ">
+              <div class="d-flex" style="align-items: center;justify-content: left;">
+                  <h2 class="card-title">Nazwa produktu</h3>
+              </div>
+              <button class="btn btn-primary col-3 m-2" type="button">
+                  Dodaj do koszyka
+                </button>
+            </div>
             <h4>1299.99 zł</h4>
             <h6 class="mt-4">Opis:</h6>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
@@ -141,6 +151,8 @@
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
+
 
 </body>
 
