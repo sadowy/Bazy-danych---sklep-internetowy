@@ -1,3 +1,5 @@
+<?php include('registrationServer.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,44 +53,45 @@
     </div>
   </nav>
 
-  <!--Kontakt info -->
+  <!--Register form -->
   <div class="container col-4" style="margin-top: 3%; margin-bottom: 3%;" >
-    <form>
-        <div class="form-group">
-            <label for="emailInput">Email</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="Email">
+    <form action="rejestracja.php" method="post">
+      <?php include('errors.php') ?>
+            <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Hasło</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regEmail">Hasło</label>
+            <input type="password" class="form-control" name="regPassword" id="regPassword" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Potwierdź hasło</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regPasswordConf">Potwierdź hasło</label>
+            <input type="password" class="form-control" name="regPasswordConf" id="regPasswordConf" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Imię</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regName">Imię</label>
+            <input type="text" class="form-control" name="regName" id="regName" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Nazwisko</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regName2">Nazwisko</label>
+            <input type="text" class="form-control" name="regName2" id="regName2" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Miasto</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regCity">Miasto</label>
+            <input type="text" class="form-control" name="regCity" id="regCity" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Ulica</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regStreet">Ulica</label>
+            <input type="text" class="form-control" name="regStreet" id="regStreet" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Kod pocztowy</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regPostal">Kod pocztowy</label>
+            <input type="text" class="form-control" name="regPostal" id="regPostal" placeholder="">
         </div>
         <div class="form-group">
-            <label for="password">Telefon</label>
-            <input type="password" class="form-control" id="passwordInput" placeholder="Hasło">
+            <label for="regPhone">Telefon</label>
+            <input type="text" class="form-control" name="regPhone" id="regPhone" placeholder="">
         </div>
         <button type="submit" class="btn btn-primary">Wyślij</button>
     </form>
