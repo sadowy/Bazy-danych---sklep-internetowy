@@ -59,41 +59,45 @@
       <?php include('errors.php') ?>
             <div class="form-group">
             <label for="regEmail">Email</label>
-            <input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="">
+            <input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regEmail">Hasło</label>
-            <input type="password" class="form-control" name="regPassword" id="regPassword" placeholder="">
+            <input type="password" class="form-control" name="regPassword" id="regPassword" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regPasswordConf">Potwierdź hasło</label>
-            <input type="password" class="form-control" name="regPasswordConf" id="regPasswordConf" placeholder="">
+            <input type="password" class="form-control" name="regPasswordConf" id="regPasswordConf" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regName">Imię</label>
-            <input type="text" class="form-control" name="regName" id="regName" placeholder="">
+            <input type="text" class="form-control" name="regName" id="regName" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regName2">Nazwisko</label>
-            <input type="text" class="form-control" name="regName2" id="regName2" placeholder="">
+            <input type="text" class="form-control" name="regName2" id="regName2" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regCity">Miasto</label>
-            <input type="text" class="form-control" name="regCity" id="regCity" placeholder="">
+            <input type="text" class="form-control" name="regCity" id="regCity" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regStreet">Ulica</label>
-            <input type="text" class="form-control" name="regStreet" id="regStreet" placeholder="">
+            <input type="text" class="form-control" name="regStreet" id="regStreet" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regPostal">Kod pocztowy</label>
-            <input type="text" class="form-control" name="regPostal" id="regPostal" placeholder="">
+            <input type="text" class="form-control" name="regPostal" id="regPostal" placeholder="" required />
         </div>
         <div class="form-group">
             <label for="regPhone">Telefon</label>
-            <input type="text" class="form-control" name="regPhone" id="regPhone" placeholder="">
+            <input type="tel" class="form-control" name="regPhone" id="regPhone" placeholder="" required />
         </div>
-        <button type="submit" class="btn btn-primary">Wyślij</button>
+        <br>
+        <div class="form-group">
+            <input type="checkbox" name="rules" disabled> Akceptuję <a href="RULES PAGE"><b>regulamin</b></a>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Wyślij</button>
     </form>
   </div>
 
