@@ -20,7 +20,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #eeffa2;">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html" style="font-size: 3ch;">
         <img class="img-fluid" width="30" height="30" src="logo.png">
