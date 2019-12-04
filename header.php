@@ -37,7 +37,7 @@
           <li class="nav-item active">
 
                     <?php 
-                    if (isset($_SESSION['zalogowany']) || $_SESSION['zalogowany'] = 1)
+                    if  (isset($_SESSION['zalogowany']))
                     {
                     echo "<li class='nav-item'>";
                     echo "<a class='nav-link' href='#' style='color: #ffffff'>";
@@ -47,7 +47,7 @@
                     }
                     else
                     {
-                        echo "HALKO";
+                    
                     }
                     ?>
 
@@ -63,14 +63,14 @@
           </li>
 
                     <?php  
-                    if (isset($_SESSION['zalogowany']) || $_SESSION['zalogowany'] = 1)
+                    if (isset($_SESSION['zalogowany']))
                     {  
                         echo "<li class='nav-item'><a class='nav-link' href='#'>Moje konto</a></li>";
                     }
                     ?>
 
                     <?php 
-                    if (isset($_SESSION['zalogowany']) || $_SESSION['zalogowany'] = 1)
+                    if (isset($_SESSION['zalogowany']))
                     {
                     echo "<li class='nav-item'>";
                     echo "<a class='nav-link' href='koszyk.php'><i class='fas fa-shopping-cart'></i></a></li>";
