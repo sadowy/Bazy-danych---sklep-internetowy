@@ -37,7 +37,7 @@
           <li class="nav-item active">
 
                     <?php 
-                    if  (isset($_SESSION['zalogowany']))
+                    if  ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
                     {
                     echo "<li class='nav-item'>";
                     echo "<a class='nav-link' href='#' style='color: #ffffff'>";
@@ -67,10 +67,18 @@
                     {  
                         echo "<li class='nav-item'><a class='nav-link' href='#'>Moje konto</a></li>";
                     }
+                    else if (isset($_SESSION['admin']))
+                    {
+                        echo "<li class='nav-item'><a class='nav-link' href='paneladmina.php'>Panel admina</a></li>";
+                    }
+                    else
+                    {
+
+                    }
                     ?>
 
                     <?php 
-                    if (isset($_SESSION['zalogowany']))
+                    if ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
                     {
                     echo "<li class='nav-item'>";
                     echo "<a class='nav-link' href='koszyk.php'><i class='fas fa-shopping-cart'></i></a></li>";

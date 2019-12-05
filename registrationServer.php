@@ -54,14 +54,14 @@ if(!empty($_POST)){
 
   
   if (count($errors) == 0) {
-  	$password = md5($password_1);
+  	$password = ($password_1);
 
   	$query = "INSERT INTO użytkownicy (name, mail, password, surname, city, phone, postal, street) 
   			  VALUES('$name', '$email', '$password', '$name2', '$city', '$phone', '$postal', '$street')";
   	mysqli_query($db, $query);
     $_SESSION['username'] = $username;
     
-  	header('location: index.html');
+  	header('location: index.php');
   }
 //}
 }

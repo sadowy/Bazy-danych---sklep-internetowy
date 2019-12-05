@@ -43,7 +43,7 @@
             <a class="nav-link" href="kontakt.php">Kontakt</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logowanie.html">Zaloguj się</a>
+            <a class="nav-link" href="logowanie.php">Zaloguj się</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="koszyk.php"><i class="fas fa-shopping-cart"></i></a>
@@ -95,7 +95,8 @@
         </div>
         <br>
         <div class="form-group">
-            <input type="checkbox" name="rules" disabled> Akceptuję <a href="RULES PAGE"><b>regulamin</b></a>
+            <input type="checkbox" id="check"> 
+            <label for="check"> Akceptuję <a href="RULES PAGE"><b>regulamin</b></a></label>
         </div>
         <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Wyślij</button>
     </form>
