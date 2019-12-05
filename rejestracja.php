@@ -22,7 +22,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html" style="font-size: 3ch;">
+      <a class="navbar-brand" href="index.php" style="font-size: 3ch;">
         <img class="img-fluid" width="30" height="30" src="logo.png">
         Gruszka.net
       </a>
@@ -32,21 +32,21 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Sklep
+            <a class="nav-link" href="index.php">Sklep
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="onas.html">O nas</a>
+            <a class="nav-link" href="onas.php">O nas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="kontakt.html">Kontakt</a>
+            <a class="nav-link" href="kontakt.php">Kontakt</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logowanie.html">Zaloguj się</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="koszyk.html"><i class="fas fa-shopping-cart"></i></a>
+              <a class="nav-link" href="koszyk.php"><i class="fas fa-shopping-cart"></i></a>
             </li>
         </ul>
       </div>
