@@ -10,7 +10,31 @@
   {
     echo "Error: ".$polaczenie->connect_errno;
   }
-  else
+  else if ($_POST['mail'] == "admin@gruszka.net" && $_POST['password'] == "admin" )
+  {
+    $sql = "SELECT * FROM użytkownicy WHERE mail='admin@gruszka.net' AND password='admin'";
+    if ($rezultat = @$polaczenie->query($sql))
+      {
+        $ilu_userow = $rezultat->num_rows;
+        if($ilu_userow>0)
+        {
+
+      //sesja admina
+      $_SESSION['admin'] = true;
+
+      $wiersz = $rezultat->fetch_assoc();
+      $_SESSION['id'] = $wiersz['id'];
+      $_SESSION['mail'] = $wiersz['mail'];
+
+      unset($_SESSION['blad']);
+      $rezultat->free_result();
+      header('Location: loggedin.php');
+
+        }
+      }
+      $polaczenie->close();
+  }
+  else 
   {
     $mail = $_POST['mail'];
     $password = $_POST['password'];
@@ -22,7 +46,10 @@
         $ilu_userow = $rezultat->num_rows;
         if($ilu_userow>0)
         {
+          //sesja uzytkownika
           $_SESSION['zalogowany'] = true;
+
+       
 
           $wiersz = $rezultat->fetch_assoc();
           $_SESSION['id'] = $wiersz['id'];
