@@ -88,7 +88,7 @@
                     {
                         echo "<li class='nav-item'>";
                         echo "<a class='nav-link' href='logowanie.php' style='color: #ffffff'>";
-                        echo "Zaloguj się śmieciu";
+                        echo "Zaloguj się";
                         echo"</a>";
                         echo "</li>";
                     }
