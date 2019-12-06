@@ -15,8 +15,8 @@
 
   <title>Gruszka</title>
 
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-item.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/shop-item.css" rel="stylesheet">
 
 </head>
 
@@ -51,15 +51,15 @@
                     }
                     ?>
 
-            <a class="nav-link" href="index.php">Sklep
+            <a class="nav-link" href="../index.php">Sklep
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="onas.php">O nas</a>
+            <a class="nav-link" href="../onas.php">O nas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="kontakt.php">Kontakt</a>
+            <a class="nav-link" href="../kontakt.php">Kontakt</a>
           </li>
 
                     <?php  
@@ -69,7 +69,7 @@
                     }
                     else if (isset($_SESSION['admin']))
                     {
-                        echo "<li class='nav-item'><a class='nav-link' href='panel_admina/paneladmina.php'>Panel admina</a></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='paneladmina.php'>Panel admina</a></li>";
                     }
                     else
                     {
@@ -81,13 +81,13 @@
                     if ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
                     {
                     echo "<li class='nav-item'>";
-                    echo "<a class='nav-link' href='koszyk.php'><i class='fas fa-shopping-cart'></i></a></li>";
-                    echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Wyloguj się</a></li>";
+                    echo "<a class='nav-link' href='../koszyk.php'><i class='fas fa-shopping-cart'></i></a></li>";
+                    echo "<li class='nav-item'><a class='nav-link' href='../logout.php'>Wyloguj się</a></li>";
                     }
                     else
                     {
                         echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='logowanie.php' style='color: #ffffff'>";
+                        echo "<a class='nav-link' href='../logowanie.php' style='color: #ffffff'>";
                         echo "Zaloguj się";
                         echo"</a>";
                         echo "</li>";
@@ -99,8 +99,8 @@
     </div>
   </nav>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
 
 
