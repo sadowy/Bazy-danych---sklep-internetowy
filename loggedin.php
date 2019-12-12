@@ -28,11 +28,11 @@
       <div class="col-lg-3" >
         <h1 class="my-4" style="color: #7d9801">Kategorie</h1>
         <div class="list-group" >
-          <a href="#f" class="list-group-item active" >Komputery</a>
-          <a href="#f" class="list-group-item"  >Telewizory</a>
-          <a href="#f" class="list-group-item" >Smartfony</a>
-          <a href="#f" class="list-group-item" >Drukarki</a>
-          <a href="#f" class="list-group-item" >Akcesoria</a>
+          <a href="#" class="list-group-item active" >Komputery</a>
+          <a href="tv.php" class="list-group-item"  >Telewizory</a>
+          <a href="smartfony.php" class="list-group-item" >Smartfony</a>
+          <a href="drukarki.php" class="list-group-item" >Drukarki</a>
+          <a href="aksecoria.php" class="list-group-item" >Akcesoria</a>
         </div>
       </div>
       <!--Produkty-->
