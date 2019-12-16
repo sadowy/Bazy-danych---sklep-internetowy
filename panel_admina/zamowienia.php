@@ -61,8 +61,6 @@
       
       
       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
-        <!--Button Pokaż recenzje-->
-        
         </div> 
         <div class="modal" tabindex="-1" role="dialog" id="formModal">
           <form>

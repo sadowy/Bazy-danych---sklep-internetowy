@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 28 Lis 2019, 23:32
+-- Czas generowania: 16 Gru 2019, 18:28
 -- Wersja serwera: 10.4.8-MariaDB
--- Wersja PHP: 7.3.10
+-- Wersja PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,98 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `gruszka`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `kategorie`
+--
+
+CREATE TABLE `kategorie` (
+  `id_kategorii` int(100) NOT NULL,
+  `nazwa_kategorii` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `kategorie`
+--
+
+INSERT INTO `kategorie` (`id_kategorii`, `nazwa_kategorii`) VALUES
+(1, 'Komputery'),
+(2, 'Telewizory'),
+(3, 'Smartfony'),
+(4, 'Drukarki'),
+(5, 'Akcesoria');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `marki`
+--
+
+CREATE TABLE `marki` (
+  `Id_marki` int(100) NOT NULL,
+  `nazwa_marki` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `marki`
+--
+
+INSERT INTO `marki` (`Id_marki`, `nazwa_marki`) VALUES
+(1, 'HP'),
+(2, 'Samsung'),
+(3, 'Apple'),
+(4, 'Sony'),
+(5, 'LG'),
+(6, 'Lenovo'),
+(7, 'MSI'),
+(8, 'Palit'),
+(9, 'Dell'),
+(10, 'Razer'),
+(11, 'Xiaomi'),
+(12, 'Huawei'),
+(13, 'Nokia'),
+(14, 'Sony');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `produkty`
+--
+
+CREATE TABLE `produkty` (
+  `id_produktu` int(100) NOT NULL,
+  `kategoria_produktu` int(100) NOT NULL,
+  `marka_produktu` int(100) NOT NULL,
+  `tytuł produktu` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
+  `cena_produktu` int(100) NOT NULL,
+  `opis_produktu` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `zdjęcie_produktu` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `słowo_kluczowe` text COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `produkty`
+--
+
+INSERT INTO `produkty` (`id_produktu`, `kategoria_produktu`, `marka_produktu`, `tytuł produktu`, `cena_produktu`, `opis_produktu`, `zdjęcie_produktu`, `słowo_kluczowe`) VALUES
+(1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', 'HPPavilion15.jpg', 'HP Pavilion laptop'),
+(2, 1, 3, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 3599, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 'MacBookAirI5.jpg', 'Apple Macbook Laptop'),
+(3, 1, 6, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 4499, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 'LenovoY540.jpg', 'Lenovo Legion Laptop'),
+(4, 3, 3, 'Apple iPhone Xr 64GB Black', 2899, 'Apple iPhone Xr 64GB Black', 'IphoneXr64.jpg', 'Iphone Apple Smartfon Telefon'),
+(5, 3, 2, 'Samsung Galaxy S10 G973F Prism Black', 2999, 'Samsung Galaxy S10 G973F Prism Black', 'GalaxyS10.jpg', 'Samsung Galaxy Smartfon Telefon'),
+(6, 3, 11, 'Xiaomi Mi 9 6/128GB Czarny', 1699, 'Xiaomi Mi 9 6/128GB Czarny', 'XiaomiMi9.jpg', 'Xiaomi Mi Smartfon Telefon'),
+(7, 3, 12, 'HUAWEI P30 Lite 4/128GB Niebieski', 1369, 'HUAWEI P30 Lite 4/128GB Niebieski', 'P30Lite.jpg', 'Huawei P30 Smartfon Telefon'),
+(8, 2, 2, 'Telewizor Samsung UE55MU6102', 2249, 'Telewizor Samsung UE55MU6102', 'SamsungUE55MU6102.jpg', 'Telewizor Samsung'),
+(9, 2, 4, 'Telewizor Sony KD-55XF8505', 3579, 'Telewizor Sony KD-55XF8505', 'SonyBraviaKD-55XF8505.jpg', 'Telewizor Sony'),
+(10, 4, 1, 'Drukarka HP LaserJet Pro M15w', 279, 'Drukarka HP LaserJet Pro M15w', 'HPLaserJet ProM15w.jpg', 'Drukarka HP'),
+(11, 1, 9, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 6999, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 'DellXPS13.jpg', 'Laptop Dell XPS'),
+(12, 1, 5, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 5199, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 'LGGram.jpg', 'Laptop LG Gram'),
+(13, 5, 10, 'Razer BlackWidow Chroma V2 Orange Switch', 449, 'Razer BlackWidow Chroma V2 Orange Switch', 'RazerBlackwidowV2.jpg', 'Klawiatura Razer BlackWidow'),
+(14, 5, 7, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 3299, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 'RTX2080MSI.jpg', 'Karta Graficzna MSI GeForce RTX'),
+(15, 5, 8, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 2399, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 'RTX2070PalitSuper.jpg', 'Karta Graficzna Geforce Palit RTX'),
+(16, 3, 3, 'Apple iPhone 11 64GB White', 3599, 'Apple iPhone 11 64GB White', 'Iphone11White.jpg', 'Apple Iphone Smartfon Telefon');
 
 -- --------------------------------------------------------
 
@@ -73,7 +165,7 @@ CREATE TABLE `użytkownicy` (
 --
 
 INSERT INTO `użytkownicy` (`id`, `mail`, `password`, `name`, `surname`, `phone`, `city`, `street`, `postal`) VALUES
-(1, 'admin@gruszka.pl', 'admin', 'admin', 'admin', 123456789, 'Jelenia Góra', 'Wolności', '58-360');
+(1, 'admin@gruszka.net', 'admin', 'admin', 'admin', 123456789, 'Jelenia Góra', 'Wolności', '58-360');
 
 -- --------------------------------------------------------
 
@@ -95,6 +187,24 @@ CREATE TABLE `zamowienia` (
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `kategorie`
+--
+ALTER TABLE `kategorie`
+  ADD PRIMARY KEY (`id_kategorii`);
+
+--
+-- Indeksy dla tabeli `marki`
+--
+ALTER TABLE `marki`
+  ADD PRIMARY KEY (`Id_marki`);
+
+--
+-- Indeksy dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  ADD PRIMARY KEY (`id_produktu`);
 
 --
 -- Indeksy dla tabeli `szczegolyzamowienia`
@@ -127,6 +237,24 @@ ALTER TABLE `zamowienia`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT dla tabeli `kategorie`
+--
+ALTER TABLE `kategorie`
+  MODIFY `id_kategorii` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT dla tabeli `marki`
+--
+ALTER TABLE `marki`
+  MODIFY `Id_marki` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT dla tabeli `produkty`
+--
+ALTER TABLE `produkty`
+  MODIFY `id_produktu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT dla tabeli `użytkownicy`
