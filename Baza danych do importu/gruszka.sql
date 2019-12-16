@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Gru 2019, 14:48
+-- Czas generowania: 16 Gru 2019, 18:28
 -- Wersja serwera: 10.4.8-MariaDB
 -- Wersja PHP: 7.3.11
 
@@ -97,22 +97,22 @@ CREATE TABLE `produkty` (
 --
 
 INSERT INTO `produkty` (`id_produktu`, `kategoria_produktu`, `marka_produktu`, `tytuł produktu`, `cena_produktu`, `opis_produktu`, `zdjęcie_produktu`, `słowo_kluczowe`) VALUES
-(1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', '', 'HP Pavilion laptop'),
-(2, 1, 3, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 3599, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', '', 'Apple Macbook Laptop'),
-(3, 1, 6, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 4499, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', '', 'Lenovo Legion Laptop'),
-(4, 3, 3, 'Apple iPhone Xr 64GB Black', 2899, 'Apple iPhone Xr 64GB Black', '', 'Iphone Apple Smartfon Telefon'),
-(5, 3, 2, 'Samsung Galaxy S10 G973F Prism Black', 2999, 'Samsung Galaxy S10 G973F Prism Black', '', 'Samsung Galaxy Smartfon Telefon'),
-(6, 3, 11, 'Xiaomi Mi 9 6/128GB Czarny', 1699, 'Xiaomi Mi 9 6/128GB Czarny', '', 'Xiaomi Mi Smartfon Telefon'),
-(7, 3, 12, 'HUAWEI P30 Lite 4/128GB Niebieski', 1369, 'HUAWEI P30 Lite 4/128GB Niebieski', '', 'Huawei P30 Smartfon Telefon'),
-(8, 2, 2, 'Telewizor Samsung UE55MU6102', 2249, 'Telewizor Samsung UE55MU6102', '', 'Telewizor Samsung'),
-(9, 2, 4, 'Telewizor Sony KD-55XF8505', 3579, 'Telewizor Sony KD-55XF8505', '', 'Telewizor Sony'),
-(10, 4, 1, 'Drukarka HP LaserJet Pro M15w', 279, 'Drukarka HP LaserJet Pro M15w', '', 'Drukarka HP'),
-(11, 1, 9, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 6999, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', '', 'Laptop Dell XPS'),
-(12, 1, 5, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 5199, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', '', 'Laptop LG Gram'),
-(13, 5, 10, 'Razer BlackWidow Chroma V2 Orange Switch', 449, 'Razer BlackWidow Chroma V2 Orange Switch', '', 'Klawiatura Razer BlackWidow'),
-(14, 5, 7, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 3299, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', '', 'Karta Graficzna MSI GeForce RTX'),
-(15, 5, 8, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 2399, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', '', 'Karta Graficzna Geforce Palit RTX'),
-(16, 3, 3, 'Apple iPhone 11 64GB White', 3599, 'Apple iPhone 11 64GB White', '', 'Apple Iphone Smartfon Telefon');
+(1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', 'HPPavilion15.jpg', 'HP Pavilion laptop'),
+(2, 1, 3, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 3599, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 'MacBookAirI5.jpg', 'Apple Macbook Laptop'),
+(3, 1, 6, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 4499, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 'LenovoY540.jpg', 'Lenovo Legion Laptop'),
+(4, 3, 3, 'Apple iPhone Xr 64GB Black', 2899, 'Apple iPhone Xr 64GB Black', 'IphoneXr64.jpg', 'Iphone Apple Smartfon Telefon'),
+(5, 3, 2, 'Samsung Galaxy S10 G973F Prism Black', 2999, 'Samsung Galaxy S10 G973F Prism Black', 'GalaxyS10.jpg', 'Samsung Galaxy Smartfon Telefon'),
+(6, 3, 11, 'Xiaomi Mi 9 6/128GB Czarny', 1699, 'Xiaomi Mi 9 6/128GB Czarny', 'XiaomiMi9.jpg', 'Xiaomi Mi Smartfon Telefon'),
+(7, 3, 12, 'HUAWEI P30 Lite 4/128GB Niebieski', 1369, 'HUAWEI P30 Lite 4/128GB Niebieski', 'P30Lite.jpg', 'Huawei P30 Smartfon Telefon'),
+(8, 2, 2, 'Telewizor Samsung UE55MU6102', 2249, 'Telewizor Samsung UE55MU6102', 'SamsungUE55MU6102.jpg', 'Telewizor Samsung'),
+(9, 2, 4, 'Telewizor Sony KD-55XF8505', 3579, 'Telewizor Sony KD-55XF8505', 'SonyBraviaKD-55XF8505.jpg', 'Telewizor Sony'),
+(10, 4, 1, 'Drukarka HP LaserJet Pro M15w', 279, 'Drukarka HP LaserJet Pro M15w', 'HPLaserJet ProM15w.jpg', 'Drukarka HP'),
+(11, 1, 9, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 6999, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 'DellXPS13.jpg', 'Laptop Dell XPS'),
+(12, 1, 5, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 5199, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 'LGGram.jpg', 'Laptop LG Gram'),
+(13, 5, 10, 'Razer BlackWidow Chroma V2 Orange Switch', 449, 'Razer BlackWidow Chroma V2 Orange Switch', 'RazerBlackwidowV2.jpg', 'Klawiatura Razer BlackWidow'),
+(14, 5, 7, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 3299, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 'RTX2080MSI.jpg', 'Karta Graficzna MSI GeForce RTX'),
+(15, 5, 8, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 2399, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 'RTX2070PalitSuper.jpg', 'Karta Graficzna Geforce Palit RTX'),
+(16, 3, 3, 'Apple iPhone 11 64GB White', 3599, 'Apple iPhone 11 64GB White', 'Iphone11White.jpg', 'Apple Iphone Smartfon Telefon');
 
 -- --------------------------------------------------------
 
