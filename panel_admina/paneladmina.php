@@ -61,14 +61,7 @@
       
       
       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
-        <!--Button Pokaż recenzje-->
-        <button class="btn btn-primary col-3 m-2" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" >
-          Opinie o produkcie
-        </button>
-        <!--Button wystaw recenzje-->
-        <button class="btn btn-success col-3 m-2" type="button"data-toggle="modal" data-target="#formModal" >
-            Wystaw opinię
-        </button>
+
         </div> 
         <div class="modal" tabindex="-1" role="dialog" id="formModal">
           <form>
