@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +15,12 @@
 
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-item.css" rel="stylesheet">
-
+  
 </head>
 
 <body>
 
-//<?php include "./header.php" ?>
+<?php include "./header.php" ?>
 
   <!--Produkty -->
   <div class="container">
@@ -31,7 +34,7 @@
           <a href="tv.php" class="list-group-item"  >Telewizory</a>
           <a href="smartfony.php" class="list-group-item" >Smartfony</a>
           <a href="drukarki.php" class="list-group-item" >Drukarki</a>
-          <a href="aksecoria.php" class="list-group-item" >Akcesoria</a>
+          <a href="akcesoria.php" class="list-group-item" >Akcesoria</a>
         </div>
       </div>
       <!--Produkty-->
@@ -110,6 +113,7 @@
       </div>
     </div>
   </div>
+  
 
   <!-- Footer -->
   <footer class="py-4">
@@ -118,13 +122,12 @@
     </div>
   </footer>
 
+ 
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
     
-    <script src="dark-mode-switch.min.js"></script>
-
-
 </body>
 
 </html>

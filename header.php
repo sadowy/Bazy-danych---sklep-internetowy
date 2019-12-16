@@ -1,28 +1,3 @@
-<?php
-  session_start();
-  include "./cart.php"
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Gruszka</title>
-
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-item.css" rel="stylesheet">
-
-</head>
-
-<body>
- 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top">
   
@@ -88,8 +63,6 @@
                     <?php 
                     if ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
                     {
-                    echo "<li class='nav-item'>";
-                   
                     echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Wyloguj się</a></li>";
                     }
                     else
@@ -100,22 +73,16 @@
                         echo"</a>";
                         echo "</li>";
                     }
+                    if(isset($_SESSION['zalogowany'])){
+                      echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='logowanie.php' style='color: #ffffff'>";
+                        echo " <i class=\"fas fa-shopping-cart\"></i>";
+                        echo"</a>";
+                        echo "</li>";
+                    }
                     ?>
             
-           <a href="?a=cart" id="li-cart"><i class="fa fa-shopping-cart"></i> Koszyk (<?php echo $cart->getTotalItem(); ?>)</a>
         </ul>
       </div>
-   
-    
-   
     
   </nav>
-
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>

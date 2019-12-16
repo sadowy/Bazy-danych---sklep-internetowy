@@ -28,7 +28,7 @@
 
       unset($_SESSION['blad']);
       $rezultat->free_result();
-      header('Location: loggedin.php');
+      header('Location: index.php');
 
         }
       }
@@ -57,7 +57,7 @@
 
           unset($_SESSION['blad']);
           $rezultat->free_result();
-          header('Location: loggedin.php');
+          header('Location: index.php');
           
         }
         else

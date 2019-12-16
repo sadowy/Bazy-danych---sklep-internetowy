@@ -44,12 +44,7 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="kontakt.php">Kontakt</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">######</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="koszyk.php"><i class="fas fa-shopping-cart"></i></a>
-            </li>
+          
         </ul>
       </div>
     </div>
