@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('Classes/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@ session_start();
 
     <div class="row">
       <!--Kategorie-->
-      <div class="col-lg-3" >
+      <div class="col-lg-3 sticky-top" >
         <h1 class="my-4" style="color: #7d9801">Kategorie</h1>
         <div class="list-group" >
           <a href="komputery.php" class="list-group-item active" >Komputery</a>
@@ -41,20 +42,53 @@ session_start();
 
       <div class="col-lg-9">
       <!--Zdjęcie i opis produktu-->
+
+      <?php
+        // $db = mysqli_connect('localhost', 'root', '', 'gruszka');
+        // $productQuery = "SELECT * FROM produkty WHERE ProductCategory = 1";
+        // $result = mysqli_query($db, $productQuery);
+        // $products = mysqli_fetch_assoc($result);
+        //  $products['ProductTitle'];
+
+        $products =  array();
+        $mysqli = new mysqli('localhost', 'root', '', 'gruszka');
+        if ($mysqli->connect_errno) {
+          printf("Connect failed: %s\n", $mysqli->connect_error);
+          exit();
+      }
+      $query = "SELECT * FROM produkty WHERE ProductCategory = 1";
+      if ($result = $mysqli->query($query)) {
+          while ($row = $result->fetch_assoc()) {
+              $ID = $row['ProductID'];
+              $Category = $row['ProductCategory'];
+              $Brand = $row['ProductBrand'];
+              $Title = $row['ProductTitle'];
+              $Price = $row['ProductPrice'];
+              $Description = $row['ProductDescription'];
+              $Photo = $row['ProductPhotos'];
+              $Tags = $row['ProductTags'];
+              $product = new Product($ID, $Category, $Brand, $Title, $Price, $Description, $Photo, $Tags);
+              $products[] = $product;
+          }
+          $result->free();
+      }
+      $mysqli->close();
+      for($i = 0; $i < count($products); $i++){
+      ?>
         <div class="card my-4">
           <img class="card-img-top img-fluid" src="gum.png" alt="">
           <div class="card-body" style="background-color: #47484b">
             <div class="d-flex justify-content-between ">
               <div class="d-flex" style="align-items: center;justify-content: left;">
-                  <h2 class="card-title" style="color: #7d9801">LENOVO IdeaPad S540-14IWL</h2>
+                  <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
               </div>
               <button class="btn btn-primary col-3 m-2" type="button" style="background-color: #7d9801;border: #7d9801;">
                   Dodaj do koszyka
                 </button>
             </div>
-            <h4>2549.99 zł</h4>
+            <h4><?php echo $products[$i]->Price; ?> zł</h4>
             <h6 class="mt-4">Opis:</h6>
-            <p class="card-text" style="color: #e1e8f0">14-calowy IdeaPad S540, wyposażony w procesor Intel Core 8. generacji oferuje dużą wydajność oraz najwyższą jakość wykonania. Ciesz się ekranem z wąską ramką, luksusową paletą kolorów oraz aluminiową obudową. Ciche, podwójne wentylatory i ulepszony system chłodzenia gwarantują, że IdeaPad S540 nie będzie przegrzewać się podczas pracy. Czytnik linii papilarnych pozwoli zalogować się tylko zaaprobowanym użytkownikom dzięki czemu zapewnia dodatkowy poziom ochrony danych. A dzięki chroniącej prywatność osłonie kamery nie będziesz się martwić, że czyjś ciekawski wzrok naruszy Twoją osobistą przestrzeń.</p>
+            <p class="card-text" style="color: #e1e8f0"><?php echo $products[$i]->Description; ?></p>
           </div>
           
           <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
@@ -107,7 +141,7 @@ session_start();
             </div>
 
           </div>
-
+          <?php } ?>
         </div>
         
       </div>
