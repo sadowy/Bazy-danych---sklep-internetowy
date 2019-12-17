@@ -10,7 +10,7 @@ $db = mysqli_connect('localhost', 'root', '', 'gruszka');
 if(!empty($_POST)){
 //if (isset($_POST['regEmail'])) {
   
-  $email = mysqli_real_escape_string($db, $_POST['regEmail']);
+  $email = strtolower(mysqli_real_escape_string($db, $_POST['regEmail']));
   $password_1 = mysqli_real_escape_string($db, $_POST['regPassword']);
   $password_2 = mysqli_real_escape_string($db, $_POST['regPasswordConf']);
   $name = mysqli_real_escape_string($db, $_POST['regName']);
@@ -20,12 +20,26 @@ if(!empty($_POST)){
   $postal = mysqli_real_escape_string($db, $_POST['regPostal']);
   $phone = mysqli_real_escape_string($db, $_POST['regPhone']);
 
+  // $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  //   array_push($errors, "Podano nie poprawny mail");
+  // } 
+
   
+  $clean_email = "";
+
+  
+  $clean_email = filter_var($email,FILTER_SANITIZE_EMAIL);
+
+  if (filter_var($clean_email,FILTER_VALIDATE_EMAIL)){
+      $email = $clean_email;
+    } else {
+      array_push($errors, "Podano błędny email");
+  }
+
   if (empty($name)) { array_push($errors, "Uzupełnij pole imię"); }
   if (empty($email)) { array_push($errors, "Uzupełnij pole email"); }
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    array_push($errors, "Podano nie poprawny mail");
-} 
+  
   if (empty($password_1)) { array_push($errors, "Hasło jest wymagane"); }
   if ($password_1 != $password_2) {
 	array_push($errors, "Hasła się nie zgadzają");
@@ -42,12 +56,12 @@ if(!empty($_POST)){
     array_push($errors, "Podano nie poprawny nr telefonu");
   }
 
-  $user_check_query = "SELECT * FROM użytkownicy WHERE mail='$email' OR name='$name' LIMIT 1";
+  $user_check_query = "SELECT * FROM users WHERE Mail='$email' OR Name='$name' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { 
-    if ($user['mail'] === $email) {
+    if ($user['Mail'] === $email) {
       array_push($errors, "Użytkownik już istnieje");
     }
   }
@@ -56,12 +70,14 @@ if(!empty($_POST)){
   if (count($errors) == 0) {
   	$password = ($password_1);
 
-  	$query = "INSERT INTO użytkownicy (name, mail, password, surname, city, phone, postal, street) 
+  	$query = "INSERT INTO users (Name, Mail, Password, Surname, City, Phone, Postal, Street) 
   			  VALUES('$name', '$email', '$password', '$name2', '$city', '$phone', '$postal', '$street')";
-  	mysqli_query($db, $query);
-    $_SESSION['username'] = $username;
-    
-  	header('location: index.php');
+  	mysqli_query($db, $query);    
+  	header('location: ../index.php');
   }
-//}
+  else
+  {
+    include 'errors.php';
+  }
+
 }

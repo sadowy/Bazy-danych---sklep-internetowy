@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('Classes/product.php');
+require('classes/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,52 +21,37 @@ require('Classes/product.php');
 
 <body>
 
-<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
   <!--Produkty -->
   <div class="container">
 
     <div class="row">
       <!--Kategorie-->
-      <div class="col-lg-3 sticky-top" >
-        <h1 class="my-4" style="color: #7d9801">Kategorie</h1>
-        <div class="list-group" >
-          <a href="komputery.php" class="list-group-item active" >Komputery</a>
-          <a href="tv.php" class="list-group-item"  >Telewizory</a>
-          <a href="smartfony.php" class="list-group-item" >Smartfony</a>
-          <a href="drukarki.php" class="list-group-item" >Drukarki</a>
-          <a href="akcesoria.php" class="list-group-item" >Akcesoria</a>
-        </div>
-      </div>
+      <?php include "static/categories.php" ?>
       <!--Produkty-->
 
       <div class="col-lg-9">
       <!--Zdjęcie i opis produktu-->
 
       <?php
-        // $db = mysqli_connect('localhost', 'root', '', 'gruszka');
-        // $productQuery = "SELECT * FROM produkty WHERE ProductCategory = 1";
-        // $result = mysqli_query($db, $productQuery);
-        // $products = mysqli_fetch_assoc($result);
-        //  $products['ProductTitle'];
-
         $products =  array();
         $mysqli = new mysqli('localhost', 'root', '', 'gruszka');
         if ($mysqli->connect_errno) {
           printf("Connect failed: %s\n", $mysqli->connect_error);
           exit();
       }
-      $query = "SELECT * FROM produkty WHERE ProductCategory = 1";
+      $query = "SELECT * FROM products WHERE CategoryID = 1";
       if ($result = $mysqli->query($query)) {
           while ($row = $result->fetch_assoc()) {
-              $ID = $row['ProductID'];
-              $Category = $row['ProductCategory'];
-              $Brand = $row['ProductBrand'];
-              $Title = $row['ProductTitle'];
-              $Price = $row['ProductPrice'];
-              $Description = $row['ProductDescription'];
-              $Photo = $row['ProductPhotos'];
-              $Tags = $row['ProductTags'];
+              $ID = $row['ID'];
+              $Category = $row['CategoryID'];
+              $Brand = $row['BrandID'];
+              $Title = $row['Title'];
+              $Price = $row['Price'];
+              $Description = $row['Description'];
+              $Photo = $row['Photos'];
+              $Tags = $row['Tags'];
               $product = new Product($ID, $Category, $Brand, $Title, $Price, $Description, $Photo, $Tags);
               $products[] = $product;
           }
@@ -76,7 +61,7 @@ require('Classes/product.php');
       for($i = 0; $i < count($products); $i++){
       ?>
         <div class="card my-4">
-          <img class="card-img-top img-fluid" src="gum.png" alt="">
+          <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
           <div class="card-body" style="background-color: #47484b">
             <div class="d-flex justify-content-between ">
               <div class="d-flex" style="align-items: center;justify-content: left;">
