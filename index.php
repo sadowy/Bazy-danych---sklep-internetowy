@@ -35,6 +35,7 @@ require('classes/product.php');
       <!--Zdjęcie i opis produktu-->
 
       <?php
+      //Query products----
         $products =  array();
         $mysqli = new mysqli('localhost', 'root', '', 'gruszka');
         if ($mysqli->connect_errno) {
@@ -57,6 +58,9 @@ require('classes/product.php');
           }
           $result->free();
       }
+      //--------------------
+      //Query reviews------
+      
       $mysqli->close();
       for($i = 0; $i < count($products); $i++){
       ?>

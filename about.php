@@ -17,7 +17,7 @@
 
 <body>
 
-<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
   <!--About us -->
   <div class="container mt-4" style="text-align: center;">

@@ -17,7 +17,7 @@
 
 <body>
 
-<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
   <!--Kontakt info -->
   <div class="container">
