@@ -29,6 +29,9 @@ require('classes/product.php');
     <div class="row">
       <!--Kategorie-->
       <?php include "static/categories.php" ?>
+      <script>
+        document.getElementById('computersCategory').className = "list-group-item active"; 
+      </script>
       <!--Produkty-->
 
       <div class="col-lg-9">
@@ -60,13 +63,15 @@ require('classes/product.php');
       }
       
       $mysqli->close();
+      // $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$i.";";
       for($i = 0; $i < count($products); $i++){
 
         //--------------------
       //Query reviews------
       
-      $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$i.";";
+      
       //----------
+
       ?>
         <div class="card my-4">
           <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
@@ -128,9 +133,10 @@ require('classes/product.php');
             //   echo "<small class=\"text-muted\">Posted by Anonymous on 3/1/17</small>";
             //   echo "<hr>";
             //   echo"</div>";
-            }
+            //}
             ?>
           </div>
+          <?php }?>
         </div>
         
       </div>

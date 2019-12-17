@@ -28,6 +28,9 @@ session_start();
     <div class="row">
       <!--Kategorie-->
       <?php include "static/categories.php" ?>
+      <script>
+        document.getElementById('tvCategory').className = "list-group-item active"; 
+      </script>
       <!--Produkty-->
 
       
