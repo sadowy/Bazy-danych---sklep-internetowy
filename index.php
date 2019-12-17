@@ -1,3 +1,7 @@
+<?php
+session_start();
+require('classes/product.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,46 +16,72 @@
 
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-item.css" rel="stylesheet">
-
+  
 </head>
 
 <body>
 
-//<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
   <!--Produkty -->
   <div class="container">
 
     <div class="row">
       <!--Kategorie-->
-      <div class="col-lg-3" >
-        <h1 class="my-4" style="color: #7d9801">Kategorie</h1>
-        <div class="list-group" >
-          <a href="komputery.php" class="list-group-item active" >Komputery</a>
-          <a href="tv.php" class="list-group-item"  >Telewizory</a>
-          <a href="smartfony.php" class="list-group-item" >Smartfony</a>
-          <a href="drukarki.php" class="list-group-item" >Drukarki</a>
-          <a href="aksecoria.php" class="list-group-item" >Akcesoria</a>
-        </div>
-      </div>
+      <?php include "static/categories.php" ?>
       <!--Produkty-->
 
       <div class="col-lg-9">
       <!--Zdjęcie i opis produktu-->
+
+      <?php
+      //Query products----
+        $products =  array();
+        $mysqli = new mysqli('localhost', 'root', '', 'gruszka');
+        if ($mysqli->connect_errno) {
+          printf("Connect failed: %s\n", $mysqli->connect_error);
+          exit();
+      }
+      $query = "SELECT * FROM products WHERE CategoryID = 1";
+      if ($result = $mysqli->query($query)) {
+          while ($row = $result->fetch_assoc()) {
+              $ID = $row['ID'];
+              $Category = $row['CategoryID'];
+              $Brand = $row['BrandID'];
+              $Title = $row['Title'];
+              $Price = $row['Price'];
+              $Description = $row['Description'];
+              $Photo = $row['Photos'];
+              $Tags = $row['Tags'];
+              $product = new Product($ID, $Category, $Brand, $Title, $Price, $Description, $Photo, $Tags);
+              $products[] = $product;
+          }
+          $result->free();
+      }
+      
+      $mysqli->close();
+      for($i = 0; $i < count($products); $i++){
+
+        //--------------------
+      //Query reviews------
+      
+      $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$i.";";
+      //----------
+      ?>
         <div class="card my-4">
-          <img class="card-img-top img-fluid" src="gum.png" alt="">
+          <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
           <div class="card-body" style="background-color: #47484b">
             <div class="d-flex justify-content-between ">
               <div class="d-flex" style="align-items: center;justify-content: left;">
-                  <h2 class="card-title" style="color: #7d9801">LENOVO IdeaPad S540-14IWL</h2>
+                  <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
               </div>
               <button class="btn btn-primary col-3 m-2" type="button" style="background-color: #7d9801;border: #7d9801;">
                   Dodaj do koszyka
                 </button>
             </div>
-            <h4>2549.99 zł</h4>
+            <h4><?php echo $products[$i]->Price; ?> zł</h4>
             <h6 class="mt-4">Opis:</h6>
-            <p class="card-text" style="color: #e1e8f0">14-calowy IdeaPad S540, wyposażony w procesor Intel Core 8. generacji oferuje dużą wydajność oraz najwyższą jakość wykonania. Ciesz się ekranem z wąską ramką, luksusową paletą kolorów oraz aluminiową obudową. Ciche, podwójne wentylatory i ulepszony system chłodzenia gwarantują, że IdeaPad S540 nie będzie przegrzewać się podczas pracy. Czytnik linii papilarnych pozwoli zalogować się tylko zaaprobowanym użytkownikom dzięki czemu zapewnia dodatkowy poziom ochrony danych. A dzięki chroniącej prywatność osłonie kamery nie będziesz się martwić, że czyjś ciekawski wzrok naruszy Twoją osobistą przestrzeń.</p>
+            <p class="card-text" style="color: #e1e8f0"><?php echo $products[$i]->Description; ?></p>
           </div>
           
           <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
@@ -91,25 +121,22 @@
           </div> 
 
           <div class="collapse" id="collapse1">
-            
-            <div class="card-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-              <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-              <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            </div>
-
+            <?php 
+            // if($result = $mysqli->query($query)){
+            //   echo "<div class=\"card-body\">";
+            //   echo "<p></p>";
+            //   echo "<small class=\"text-muted\">Posted by Anonymous on 3/1/17</small>";
+            //   echo "<hr>";
+            //   echo"</div>";
+            }
+            ?>
           </div>
-
         </div>
         
       </div>
     </div>
   </div>
+  
 
   <!-- Footer -->
   <footer class="py-4">
@@ -118,13 +145,12 @@
     </div>
   </footer>
 
+ 
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
     
-    <script src="dark-mode-switch.min.js"></script>
-
-
 </body>
 
 </html>

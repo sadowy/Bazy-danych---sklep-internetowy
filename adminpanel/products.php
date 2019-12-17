@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,31 +13,21 @@
 
   <title>Gruszka</title>
 
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-item.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/shop-item.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<?php include "./header.php" ?>
-
+<?php include "header.php" ?>
 
 <!--Produkty -->
 <div class="container">
 
 <div class="row">
   <!--Kategorie-->
-  <div class="col-lg-3" >
-    <h1 class="my-4" style="color: #7d9801">Panel Admina</h1>
-    <div class="list-group" >
-      <a href="paneladmina.php" class="list-group-item" >Konto admina</a>
-      <a href="uzytkownicy.php" class="list-group-item"  >Użytkownicy</a>
-      <a href="produkty.php" class="list-group-item" >Produkty</a>
-      <a href="zamowienia.php" class="list-group-item" >Zamówienia</a>
-      <a href="reklamacje.php" class="list-group-item active" >Reklamacje/zwroty</a>
-    </div>
-  </div>
+  <?php include "../static/adminPanelCategories.php" ?>
   
 
   <div class="col-lg-9">
@@ -45,10 +38,10 @@
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">REKLAMACJE / ZWROTY</h2>
+              <h2 class="card-title" style="color: #7d9801">PRODUKTY</h2>
           </div>
         </div>
-        Nazwa klienta, id reklamowanego produktu, powód.
+        Lista produktów, opcje dodaj/usuń produkt.
         <br>
         <br>
         <br>
@@ -114,10 +107,10 @@
       <p class="m-0 text-center text-white">Copyright &copy; Gruszka.net 2019</p>
     </div>
   </footer>
-  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
+  <script src="../https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 </body>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 16 Gru 2019, 18:28
+-- Czas generowania: 17 Gru 2019, 12:02
 -- Wersja serwera: 10.4.8-MariaDB
--- Wersja PHP: 7.3.11
+-- Wersja PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,41 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `kategorie`
+-- Struktura tabeli dla tabeli `brands`
 --
 
-CREATE TABLE `kategorie` (
-  `id_kategorii` int(100) NOT NULL,
-  `nazwa_kategorii` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
+CREATE TABLE `brands` (
+  `ID` int(100) NOT NULL,
+  `Name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
--- Zrzut danych tabeli `kategorie`
+-- Zrzut danych tabeli `brands`
 --
 
-INSERT INTO `kategorie` (`id_kategorii`, `nazwa_kategorii`) VALUES
-(1, 'Komputery'),
-(2, 'Telewizory'),
-(3, 'Smartfony'),
-(4, 'Drukarki'),
-(5, 'Akcesoria');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `marki`
---
-
-CREATE TABLE `marki` (
-  `Id_marki` int(100) NOT NULL,
-  `nazwa_marki` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `marki`
---
-
-INSERT INTO `marki` (`Id_marki`, `nazwa_marki`) VALUES
+INSERT INTO `brands` (`ID`, `Name`) VALUES
 (1, 'HP'),
 (2, 'Samsung'),
 (3, 'Apple'),
@@ -78,25 +56,64 @@ INSERT INTO `marki` (`Id_marki`, `nazwa_marki`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `produkty`
+-- Struktura tabeli dla tabeli `categories`
 --
 
-CREATE TABLE `produkty` (
-  `id_produktu` int(100) NOT NULL,
-  `kategoria_produktu` int(100) NOT NULL,
-  `marka_produktu` int(100) NOT NULL,
-  `tytuł produktu` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
-  `cena_produktu` int(100) NOT NULL,
-  `opis_produktu` text COLLATE utf8mb4_polish_ci NOT NULL,
-  `zdjęcie_produktu` text COLLATE utf8mb4_polish_ci NOT NULL,
-  `słowo_kluczowe` text COLLATE utf8mb4_polish_ci NOT NULL
+CREATE TABLE `categories` (
+  `ID` int(100) NOT NULL,
+  `Name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `categories`
+--
+
+INSERT INTO `categories` (`ID`, `Name`) VALUES
+(1, 'Komputery'),
+(2, 'Telewizory'),
+(3, 'Smartfony'),
+(4, 'Drukarki'),
+(5, 'Akcesoria');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `orders`
+--
+
+CREATE TABLE `orders` (
+  `ID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,
+  `IDszczegolyzamowienia` int(11) NOT NULL,
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `City` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Street` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Postal` int(7) NOT NULL,
+  `Phone` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `products`
+--
+
+CREATE TABLE `products` (
+  `ID` int(100) NOT NULL,
+  `CategoryID` int(100) NOT NULL,
+  `BrandID` int(100) NOT NULL,
+  `Title` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
+  `Price` int(100) NOT NULL,
+  `Description` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `Photos` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `Tags` text COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Zrzut danych tabeli `produkty`
+-- Zrzut danych tabeli `products`
 --
 
-INSERT INTO `produkty` (`id_produktu`, `kategoria_produktu`, `marka_produktu`, `tytuł produktu`, `cena_produktu`, `opis_produktu`, `zdjęcie_produktu`, `słowo_kluczowe`) VALUES
+INSERT INTO `products` (`ID`, `CategoryID`, `BrandID`, `Title`, `Price`, `Description`, `Photos`, `Tags`) VALUES
 (1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', 'HPPavilion15.jpg', 'HP Pavilion laptop'),
 (2, 1, 3, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 3599, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 'MacBookAirI5.jpg', 'Apple Macbook Laptop'),
 (3, 1, 6, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 4499, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 'LenovoY540.jpg', 'Lenovo Legion Laptop'),
@@ -117,6 +134,19 @@ INSERT INTO `produkty` (`id_produktu`, `kategoria_produktu`, `marka_produktu`, `
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `ID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `Content` text COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `szczegolyzamowienia`
 --
 
@@ -131,80 +161,66 @@ CREATE TABLE `szczegolyzamowienia` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `towary`
+-- Struktura tabeli dla tabeli `users`
 --
 
-CREATE TABLE `towary` (
-  `id` int(11) NOT NULL,
-  `Nazwa` varchar(200) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `Ilość` int(11) NOT NULL,
-  `Wartość` int(11) NOT NULL,
-  `Kategoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `użytkownicy`
---
-
-CREATE TABLE `użytkownicy` (
-  `id` int(11) NOT NULL,
-  `mail` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `password` varchar(100) CHARACTER SET utf32 COLLATE utf32_polish_ci NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `phone` int(11) NOT NULL,
-  `city` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `street` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `postal` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `Mail` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Password` varchar(100) CHARACTER SET utf32 COLLATE utf32_polish_ci NOT NULL,
+  `Name` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Phone` int(11) NOT NULL,
+  `City` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Street` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `Postal` varchar(10) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Zrzut danych tabeli `użytkownicy`
+-- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `użytkownicy` (`id`, `mail`, `password`, `name`, `surname`, `phone`, `city`, `street`, `postal`) VALUES
-(1, 'admin@gruszka.net', 'admin', 'admin', 'admin', 123456789, 'Jelenia Góra', 'Wolności', '58-360');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `zamowienia`
---
-
-CREATE TABLE `zamowienia` (
-  `id` int(11) NOT NULL,
-  `idKlienta` int(11) NOT NULL,
-  `idSzczegolyZamowienia` int(11) NOT NULL,
-  `DataZamowienia` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `Miasto` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `Ulica` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `KodPocztowy` int(7) NOT NULL,
-  `Telefon` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+INSERT INTO `users` (`ID`, `Mail`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Street`, `Postal`) VALUES
+(1, 'admin@gruszka.net', 'admin', 'admin', 'admin', 123456789, 'Jelenia Góra', 'Wolności', '58-360'),
+(5, 'janusz@wp.pl', '1234', 'Janusz', 'Nowak', 111222333, 'Jelenia Góra', 'Wolności 245', '58-360');
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
--- Indeksy dla tabeli `kategorie`
+-- Indeksy dla tabeli `brands`
 --
-ALTER TABLE `kategorie`
-  ADD PRIMARY KEY (`id_kategorii`);
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Indeksy dla tabeli `marki`
+-- Indeksy dla tabeli `categories`
 --
-ALTER TABLE `marki`
-  ADD PRIMARY KEY (`Id_marki`);
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Indeksy dla tabeli `produkty`
+-- Indeksy dla tabeli `orders`
 --
-ALTER TABLE `produkty`
-  ADD PRIMARY KEY (`id_produktu`);
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `idKlienta` (`ClientID`),
+  ADD KEY `idSzczegolyZamowienia` (`IDszczegolyzamowienia`);
+
+--
+-- Indeksy dla tabeli `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksy dla tabeli `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `CustomerID` (`CustomerID`),
+  ADD KEY `ProductID` (`ProductID`);
 
 --
 -- Indeksy dla tabeli `szczegolyzamowienia`
@@ -215,69 +231,67 @@ ALTER TABLE `szczegolyzamowienia`
   ADD KEY `idZamowienia` (`idZamowienia`);
 
 --
--- Indeksy dla tabeli `towary`
+-- Indeksy dla tabeli `users`
 --
-ALTER TABLE `towary`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `użytkownicy`
---
-ALTER TABLE `użytkownicy`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `zamowienia`
---
-ALTER TABLE `zamowienia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idKlienta` (`idKlienta`),
-  ADD KEY `idSzczegolyZamowienia` (`idSzczegolyZamowienia`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `kategorie`
+-- AUTO_INCREMENT dla tabeli `brands`
 --
-ALTER TABLE `kategorie`
-  MODIFY `id_kategorii` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `brands`
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT dla tabeli `marki`
+-- AUTO_INCREMENT dla tabeli `categories`
 --
-ALTER TABLE `marki`
-  MODIFY `Id_marki` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `categories`
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT dla tabeli `produkty`
+-- AUTO_INCREMENT dla tabeli `products`
 --
-ALTER TABLE `produkty`
-  MODIFY `id_produktu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+ALTER TABLE `products`
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT dla tabeli `użytkownicy`
+-- AUTO_INCREMENT dla tabeli `reviews`
 --
-ALTER TABLE `użytkownicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `reviews`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ograniczenia dla zrzutów tabel
 --
 
 --
+-- Ograniczenia dla tabeli `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`idSzczegolyZamowienia`) REFERENCES `szczegolyzamowienia` (`id`);
+
+--
+-- Ograniczenia dla tabeli `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `users` (`id`);
+
+--
 -- Ograniczenia dla tabeli `szczegolyzamowienia`
 --
 ALTER TABLE `szczegolyzamowienia`
-  ADD CONSTRAINT `szczegolyzamowienia_ibfk_1` FOREIGN KEY (`idTowaru`) REFERENCES `towary` (`id`),
-  ADD CONSTRAINT `szczegolyzamowienia_ibfk_2` FOREIGN KEY (`idZamowienia`) REFERENCES `zamowienia` (`id`);
-
---
--- Ograniczenia dla tabeli `zamowienia`
---
-ALTER TABLE `zamowienia`
-  ADD CONSTRAINT `zamowienia_ibfk_2` FOREIGN KEY (`idSzczegolyZamowienia`) REFERENCES `szczegolyzamowienia` (`id`);
+  ADD CONSTRAINT `szczegolyzamowienia_ibfk_2` FOREIGN KEY (`idZamowienia`) REFERENCES `orders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

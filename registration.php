@@ -1,4 +1,6 @@
-<?php include('registrationServer.php') ?>
+<?php include('logic/registrationServer.php') 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,43 +22,12 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.php" style="font-size: 3ch;">
-        <img class="img-fluid" width="30" height="30" src="logo.png">
-        Gruszka.net
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Sklep
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="onas.php">O nas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="kontakt.php">Kontakt</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logowanie.php">Zaloguj się</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="koszyk.php"><i class="fas fa-shopping-cart"></i></a>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include "static/header.php" ?>
 
   <!--Register form -->
   <div class="container col-4" style="margin-top: 3%; margin-bottom: 3%;" >
-    <form action="rejestracja.php" method="post">
-      <?php include('errors.php') ?>
+    <form action="logic/registrationServer.php" method="post">
+      <?php include('logic/errors.php') ?>
             <div class="form-group">
             <label for="regEmail">Email</label>
             <input type="email" class="form-control" name="regEmail" id="regEmail" placeholder="" required />

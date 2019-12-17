@@ -22,42 +22,11 @@ session_start();
 <body>
 
     <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.php" style="font-size: 3ch;">
-        <img class="img-fluid" width="30" height="30" src="logo.png">
-        Gruszka.net
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Sklep
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="onas.php">O nas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="kontakt.php">Kontakt</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">######</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="koszyk.php"><i class="fas fa-shopping-cart"></i></a>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <?php include "static/header.php" ?>
 
   <!--Login form -->
   <div class="container col-4" style="margin-top: 5%; margin-bottom: 5%;">
-      <form action="zaloguj.php" method="POST">
+      <form action="logic/loginServer.php" method="POST">
           <div class="form-group">
             <label for="emailInput">Adres e-mail</label>
             <input type="mail" class="form-control" name="mail" placeholder="Wprowadź adres e-mail">
@@ -77,7 +46,7 @@ session_start();
 
 </div>
 <div class="container col-4" style="margin-top: 5%; margin-bottom: 5%; text-align: center;">
-  <a href="rejestracja.php"><button class="btn btn-primary">Nie masz jeszcze konta? Zarejestruj się!</button></a>
+  <a href="registration.php"><button class="btn btn-primary">Nie masz jeszcze konta? Zarejestruj się!</button></a>
 </div>
 
   <!-- Footer -->

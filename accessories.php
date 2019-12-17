@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,13 +20,20 @@
 
 <body>
 
-<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
-  <!--About us -->
-  <div class="container mt-4" style="text-align: center;">
-    <p>Projekt wykonany na przedmiot Bazy danych 2.</p>
-    <p>Wykonali: Artur Rogowski, Filip Górny, Mikołaj Grzegrzółka, Jakub Sadowy.</p>
+  <!--Produkty -->
+  <div class="container">
+
+    <div class="row">
+      <!--Kategorie-->
+      <?php include "static/categories.php" ?>
+      <!--Produkty-->
+
+      
+    </div>
   </div>
+  
 
   <!-- Footer -->
   <footer class="py-4">
@@ -35,8 +45,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
-
-
+    
 </body>
 
 </html>

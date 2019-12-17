@@ -22,18 +22,11 @@ session_start();
 
 <?php include "static/header.php" ?>
 
-  <!--Produkty -->
+  <!--Kontakt info -->
   <div class="container">
-
-    <div class="row">
-      <!--Kategorie-->
-      <?php include "static/categories.php" ?>
-      <!--Produkty-->
-
-      
-    </div>
+    <br>
+    <p>KONTAKT</p>
   </div>
-  
 
   <!-- Footer -->
   <footer class="py-4">
@@ -41,11 +34,12 @@ session_start();
       <p class="m-0 text-center text-white">Copyright &copy; Gruszka.net 2019</p>
     </div>
   </footer>
+  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
-    
+
+
 </body>
 
 </html>

@@ -26,7 +26,7 @@ session_start();
   <div class="container">
 
     <div class="row">
-      <!--Kategorie-->
+      <!--Kategorie-->   
       <?php include "static/categories.php" ?>
       <!--Produkty-->
 

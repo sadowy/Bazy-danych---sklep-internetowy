@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +20,19 @@
 
 <body>
 
-<?php include "./header.php" ?>
-
+<?php include "static/header.php" ?>
   <!--Produkty -->
   <div class="container">
 
+    <div class="row">
+      <!--Kategorie-->
+      <?php include "static/categories.php" ?>
+      <!--Produkty-->
+
+      
+    </div>
   </div>
+  
 
   <!-- Footer -->
   <footer class="py-4">
@@ -34,8 +44,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
-
-
+    
 </body>
 
 </html>
