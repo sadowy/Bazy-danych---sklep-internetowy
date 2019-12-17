@@ -58,11 +58,15 @@ require('classes/product.php');
           }
           $result->free();
       }
-      //--------------------
-      //Query reviews------
       
       $mysqli->close();
       for($i = 0; $i < count($products); $i++){
+
+        //--------------------
+      //Query reviews------
+      
+      $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$i.";";
+      //----------
       ?>
         <div class="card my-4">
           <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
@@ -117,20 +121,16 @@ require('classes/product.php');
           </div> 
 
           <div class="collapse" id="collapse1">
-            
-            <div class="card-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-              <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-              <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-              <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            </div>
-
+            <?php 
+            // if($result = $mysqli->query($query)){
+            //   echo "<div class=\"card-body\">";
+            //   echo "<p></p>";
+            //   echo "<small class=\"text-muted\">Posted by Anonymous on 3/1/17</small>";
+            //   echo "<hr>";
+            //   echo"</div>";
+            }
+            ?>
           </div>
-          <?php } ?>
         </div>
         
       </div>

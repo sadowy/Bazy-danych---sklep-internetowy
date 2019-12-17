@@ -43,7 +43,7 @@
             }
             else if (isset($_SESSION['admin']))
             {
-                echo "<li class='nav-item'><a class='nav-link' href='panel_admina/paneladmina.php'>Panel admina</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='adminpanel/adminPanel.php'>Panel admina</a></li>";
             }
             ?>
             <?php 
