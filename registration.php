@@ -1,4 +1,6 @@
-<?php include('logic/registrationServer.php') ?>
+<?php include('logic/registrationServer.php') 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">

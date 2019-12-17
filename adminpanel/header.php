@@ -1,3 +1,4 @@
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg fixed-top">
   
@@ -49,7 +50,7 @@
             <?php 
             if ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
             {
-            echo "<li class='nav-item'><a class='nav-link' href='logout.php'>Wyloguj się</a></li>";
+            echo "<li class='nav-item'><a class='nav-link' href='../logic/logout.php'>Wyloguj się</a></li>";
             }
             else
             {
