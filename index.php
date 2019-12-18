@@ -33,11 +33,11 @@ require('classes/product.php');
                 echo  "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
                 echo  "<span aria-hidden=\"true\">&times;</span>";
                 echo  "</button>";
-                echo  "<h4 class=\"alert-heading\">Udało się dodać komentarz!</h4>";
+                echo  "<h4 class=\"alert-heading\">Udało się!</h4>";
                 echo "<p>Dziękujemy za podzielenie się swoją opinią.</p>";
-                
                 echo  "</div>";
               }
+              unset($_SESSION['addedReview']);
             }
               
       ?>
