@@ -19,5 +19,6 @@
             
 mysqli_query($db, $query);    
 $_SESSION['addedReview'] = true;
-header('location: ../index.php');
+//header('location: ../index.php');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
