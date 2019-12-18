@@ -22,6 +22,7 @@ require('classes/product.php');
 <body>
 
 <?php include "static/header.php" ?>
+<?php include "static/addedReviewAlert.php" ?>
 
   <!--Produkty -->
   <div class="container">
