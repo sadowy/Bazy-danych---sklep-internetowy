@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Gru 2019, 12:02
+-- Czas generowania: 18 Gru 2019, 19:05
 -- Wersja serwera: 10.4.8-MariaDB
 -- Wersja PHP: 7.3.10
 
@@ -141,8 +141,21 @@ CREATE TABLE `reviews` (
   `ID` int(11) NOT NULL,
   `ProductID` int(11) NOT NULL,
   `CustomerID` int(11) NOT NULL,
-  `Content` text COLLATE utf8mb4_polish_ci NOT NULL
+  `Content` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `TimeStamp` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `reviews`
+--
+
+INSERT INTO `reviews` (`ID`, `ProductID`, `CustomerID`, `Content`, `TimeStamp`) VALUES
+(1, 16, 5, 'Telefon to rakieta, serdecznie polecam.', '2019-12-17'),
+(2, 12, 5, 'Komputer świetnie się sprawuje.', '2019-12-18'),
+(3, 12, 5, 'Komputer niestety uległ awarii, będę musiał zareklamować.', '2019-12-19'),
+(4, 11, 5, 'No, wkońcu porządny laptop od Della. Nie polecam.', '2019-12-18'),
+(12, 4, 5, 'Daję radę.', '2019-12-18'),
+(13, 1, 5, 'rfs', '2019-12-18');
 
 -- --------------------------------------------------------
 
@@ -220,7 +233,7 @@ ALTER TABLE `products`
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CustomerID` (`CustomerID`),
-  ADD KEY `ProductID` (`ProductID`);
+  ADD KEY `reviews_ibfk_2` (`ProductID`);
 
 --
 -- Indeksy dla tabeli `szczegolyzamowienia`
@@ -262,7 +275,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT dla tabeli `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
@@ -285,7 +298,7 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ID`);
 
 --
 -- Ograniczenia dla tabeli `szczegolyzamowienia`
