@@ -1,4 +1,4 @@
-<div class="col-lg-3 sticky-top" >
+<div class="col-lg-3 " >
     <h1 class="my-4" style="color: #7d9801">Kategorie</h1>
     <div class="list-group" >
         <a id="computersCategory" href="computers.php" class="list-group-item" >Komputery</a>

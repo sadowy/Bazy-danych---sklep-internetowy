@@ -62,15 +62,12 @@ require('classes/product.php');
           $result->free();
       }
       
-      $mysqli->close();
-      // $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$i.";";
+      
+      
       for($i = 0; $i < count($products); $i++){
 
         //--------------------
-      //Query reviews------
       
-      
-      //----------
 
       ?>
         <div class="card my-4">
@@ -127,13 +124,18 @@ require('classes/product.php');
 
           <div class="collapse" id="collapse1">
             <?php 
-            // if($result = $mysqli->query($query)){
-            //   echo "<div class=\"card-body\">";
-            //   echo "<p></p>";
-            //   echo "<small class=\"text-muted\">Posted by Anonymous on 3/1/17</small>";
-            //   echo "<hr>";
-            //   echo"</div>";
-            //}
+              //Query reviews------
+              $query = "SELECT reviews.ID, reviews.Content, reviews.TimeStamp, products.ID, users.ID, users.Name FROM reviews, products, users WHERE 
+              reviews.ProductID = products.ID AND reviews.CustomerID = users.ID AND products.id = ".$products[$i]->ID.";";
+              if ($result = $mysqli->query($query)) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class=\"card-body\">";
+                    echo "<p>".$row['Content']."</p>";
+                    echo "<small class=\"text-muted\">Wystawiona przez ".$row['Name']." dnia ".$row['TimeStamp']."</small>";
+                    echo "<hr>";
+                    echo"</div>";
+                }
+            }
             ?>
           </div>
           <?php }?>
@@ -143,7 +145,7 @@ require('classes/product.php');
     </div>
   </div>
   
-
+<?php $mysqli->close(); ?>
   <!-- Footer -->
   <footer class="py-4">
     <div class="container">
