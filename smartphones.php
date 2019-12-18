@@ -27,6 +27,9 @@ session_start();
     <div class="row">
       <!--Kategorie-->
       <?php include "static/categories.php" ?>
+      <script>
+        document.getElementById('smartphonesCategory').className = "list-group-item active"; 
+      </script>
       <!--Produkty-->
 
       

@@ -21,7 +21,7 @@ session_start();
 <body>
 
 <?php include "header.php" ?>
-
+<script src="../js/adminPanelHeaderScript.js"></script>
 
 <!--Produkty -->
 <div class="container">
@@ -29,7 +29,9 @@ session_start();
 <div class="row">
   <!--Kategorie-->
   <?php include "../static/adminPanelCategories.php" ?>
-  
+  <script>
+    document.getElementById('adminPanelCategoriesLink4').className = "list-group-item active"; 
+  </script>
 
   <div class="col-lg-9">
 
