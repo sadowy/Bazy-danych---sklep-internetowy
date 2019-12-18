@@ -20,7 +20,8 @@ session_start();
 
 <body>
 
-<?php include "header.php" ?>
+<?php include "../static/header.php" ?>
+<script src="../js/adminPanelHeaderScript.js"></script>
 
 <!--Produkty -->
 <div class="container">
@@ -28,6 +29,9 @@ session_start();
 <div class="row">
   <!--Kategorie-->
   <?php include "../static/adminPanelCategories.php" ?>
+  <script>
+    document.getElementById('adminPanelCategoriesLink3').className = "list-group-item active"; 
+  </script>
   
 
   <div class="col-lg-9">
@@ -41,14 +45,30 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">PRODUKTY</h2>
           </div>
         </div>
-        Lista produktów, opcje dodaj/usuń produkt.
+		
+		<form action="addProduct.php" method="post">
+		
+        IDKategorii :                     <br> <input type="number" name="CategoryID">
+	                                       <br/>
+		IDMarki:                          <br> <input type="number" name="BrandID">
+	                                       <br/>
+		Tytuł:                             <br> <input type="text" size="75" name="Title">
+	                                       <br/>
+		Cena:                              <br> <input type="number" name="Price">
+	                                       <br/>
+		Opis:                              <br> <textarea rows="30" cols="100" name="Description"></textarea>      
+	                                       <br/>
+		Zdjęcie : <br> <input type="text" size="75" name="Photos">
+	                                       <br/>	
+		Tagi:                              <br> <input type="text" size="75" name="Tags">
+	                                       <br/>
         <br>
         <br>
-        <br>
+        <input type="submit" value="Dodaj Produkt">
         <br>
         <br>
         
-
+		</form>
       </div>
       
       

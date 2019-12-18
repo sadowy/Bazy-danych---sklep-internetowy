@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('classes/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,16 @@ session_start();
     <div class="row">
       <!--Kategorie-->   
       <?php include "static/categories.php" ?>
+      <script>
+        document.getElementById('computersCategory').className = "list-group-item active"; 
+      </script>
       <!--Produkty-->
-
+      <div class="col-lg-9">
+        <?php
+          $queryProducts = "SELECT * FROM products WHERE CategoryID = 1";
+          include('static/products.php');
+        ?>
+      </div> 
       
     </div>
   </div>
