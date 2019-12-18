@@ -1,35 +1,20 @@
 <?php
-
-	$con = mysqli_connect('127.0.0.1','root','');
+if (isset($_POST['upload'])) {
+	$target = "products/".basename($_FILES['image']['name']);
 	
-	if(!$con)
-	{
-		echo 'Nie połączono z serwerem';
-	}
+	$db = mysqli_connect("localhost", "root", "", "gruszka");
 	
-	if(!mysqli_select_db($con,'gruszka'))
-	{
-		echo 'Nie wybrano bazy daynch';
-	}
-	
+	$image = $_FILES['image']['name'];
 	$CategoryID = $_POST['CategoryID'];
 	$BrandID = $_POST['BrandID'];
 	$Title = $_POST['Title'];
 	$Price = $_POST['Price'];
 	$Description = $_POST['Description'];
-	$Photos = $_POST['Photos'];
 	$Tags = $_POST['Tags'];
 	
-	$sql= "INSERT INTO products (CategoryID,BrandID,Title,Price,Description,Photos,Tags) VALUES ('$CategoryID','$BrandID','$Title','$Price','$Description','$Photos','$Tags')";
-
-	if(!mysqli_query($con,$sql))
-	{
-		echo 'Dodanie nie powiodło sie';
-	}
-	else
-	{
-		echo 'Dodano Produkt';
-	}
+	$sql= "INSERT INTO products (CategoryID,BrandID,Title,Price,Description,Photos,Tags) VALUES ('$CategoryID','$BrandID','$Title','$Price','$Description','$image','$Tags')";
+	mysqli_query($db, $sql);
 	
-	header("refresh:2; url=products.php");
+}
+header("refresh:2; url=products.php");
 ?>

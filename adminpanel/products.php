@@ -46,11 +46,11 @@ session_start();
           </div>
         </div>
 		
-		<form action="addProduct.php" method="post">
+		<form enctype="multipart/form-data" action="addProduct.php" method="post">
 		
-        IDKategorii :                     <br> <input type="number" name="CategoryID">
+        ID Kategorii :                     <br> <input type="number" name="CategoryID">
 	                                       <br/>
-		IDMarki:                          <br> <input type="number" name="BrandID">
+		ID Marki:                          <br> <input type="number" name="BrandID">
 	                                       <br/>
 		Tytuł:                             <br> <input type="text" size="75" name="Title">
 	                                       <br/>
@@ -58,13 +58,15 @@ session_start();
 	                                       <br/>
 		Opis:                              <br> <textarea rows="30" cols="100" name="Description"></textarea>      
 	                                       <br/>
-		Zdjęcie : <br> <input type="text" size="75" name="Photos">
-	                                       <br/>	
+		Zdjęcie :						   <br> <input type="file" name="image">
+										   <br/>
 		Tagi:                              <br> <input type="text" size="75" name="Tags">
 	                                       <br/>
         <br>
         <br>
-        <input type="submit" value="Dodaj Produkt">
+		<div>
+        <input type="submit" name="upload" value="Dodaj Produkt">
+		</div>
         <br>
         <br>
         
