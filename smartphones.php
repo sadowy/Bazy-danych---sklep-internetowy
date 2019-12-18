@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('classes/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,12 @@ session_start();
         document.getElementById('smartphonesCategory').className = "list-group-item active"; 
       </script>
       <!--Produkty-->
-
+      <div class="col-lg-9">
+        <?php
+          $queryProducts = "SELECT * FROM products WHERE CategoryID = 3";
+          include('static/products.php');
+        ?>
+      </div> 
       
     </div>
   </div>
