@@ -61,7 +61,7 @@
             }
             if(isset($_SESSION['zalogowany'])){
               echo "<li class='nav-item'>";
-                echo "<a id=\"cartLink\" class='nav-link' href='login.php' style='color: #ffffff'>";
+                echo "<a id=\"cartLink\" class='nav-link' href='cart.php' style='color: #ffffff'>";
                 echo " <i class=\"fas fa-shopping-cart\"></i>";
                 echo"</a>";
                 echo "</li>";

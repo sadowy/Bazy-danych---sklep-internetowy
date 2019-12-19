@@ -20,11 +20,11 @@ session_start();
 
 <body>
 
-<?php include "./header.php" ?>
+<?php include "static/header.php" ?>
 
   <!--Produkty -->
-  <div class="container">
-
+  <div class="container mt-4">
+    KOSZYK
   </div>
 
   <!-- Footer -->
