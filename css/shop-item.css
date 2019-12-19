@@ -71,15 +71,24 @@ a.list-group-item.active
   background-color: #7d9801;
   border: #7d9801;
 }
-button.navbar-toggler
+button.navbar-toggler, .bootstrap-select, button.navbar-toggler:active, button.navbar-toggler:focus
 {
   border-color: #7d9801 !important;
   background-color: #121212 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+button.navbar-toggler:hover
+{
+  background-color: #516301 !important;
 }
 
 nav.navbar-dark
 {
  background-color: #121212 !important;
 }
+
+
 
 
