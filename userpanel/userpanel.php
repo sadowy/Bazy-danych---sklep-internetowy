@@ -45,7 +45,7 @@ session_start();
           </div>
         </div>
        
-         <a href="changeform.php">Zmień adres e-mail</a><p>
+         <a href="changeform.php">Zmień hasło</a><p>
         <br>
         <br>
         <br>
