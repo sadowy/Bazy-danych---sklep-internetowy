@@ -44,10 +44,16 @@ nav.navbar
   background-color: #121212;
 }
 
-button.btn
+button.btn, button.btn:focus,  button.btn:active, .bootstrap-select 
 {
-  background-color: #7d9801;
-  border: #7d9801;
+  background-color: #7d9801 !important;
+  border-color: #12121200 !important;
+  box-shadow: none !important;
+  
+}
+button.btn:hover
+{
+  background-color: #516301 !important;
 }
 
 footer
@@ -65,4 +71,15 @@ a.list-group-item.active
   background-color: #7d9801;
   border: #7d9801;
 }
+button.navbar-toggler
+{
+  border-color: #7d9801 !important;
+  background-color: #121212 !important;
+}
+
+nav.navbar-dark
+{
+ background-color: #121212 !important;
+}
+
 

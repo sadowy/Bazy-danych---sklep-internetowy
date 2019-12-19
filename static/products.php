@@ -40,7 +40,7 @@
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-                          <button class="btn btn-primary col-3 m-2" type="button" style="background-color: #7d9801;border: #7d9801;">
+                          <button class="btn btn-primary col-3 m-2" type="button">
                               Dodaj do koszyka
                             </button>
                         </div>
@@ -84,8 +84,8 @@
                                       </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Wyślij opinię</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Zamknij</button>
                                   </div>
                               </div>
                             </div>

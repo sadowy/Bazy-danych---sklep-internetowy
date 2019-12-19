@@ -6,9 +6,11 @@
         <img id="logo" class="img-fluid" width="30" height="30" src="static/logo.png">
         Gruszka.net
       </a>
+      <nav class="navbar navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      </nav>
       
       <div class="collapse navbar-collapse" id="navbarResponsive">
       
