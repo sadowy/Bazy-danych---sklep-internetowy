@@ -8,7 +8,7 @@ if (count($_POST) > 0) {
         mysqli_query($polaczenie, "UPDATE users set Password='" . $_POST["newPassword"] . "' WHERE mail='" . $_SESSION["mail"] . "'");
         $message = "Hasło zostało zmienione!";
     } else
-        $message = "Dotychczasowe hasło jest nie prawidłowe.";
+        $message = "Dotychczasowe hasło jest nieprawidłowe.";
 }
 ?>
 
