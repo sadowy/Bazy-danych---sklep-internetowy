@@ -41,7 +41,7 @@ session_start();
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">Konto użytkownika</h2>
+              <h2 class="card-title" style="color: #7d9801">KONTO UŻYTKOWNIKA</h2>
           </div>
         </div>
        
