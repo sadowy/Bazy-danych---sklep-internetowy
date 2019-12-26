@@ -20,7 +20,7 @@ session_start();
 
 <body>
 
-<?php include "header.php" ?>
+<?php include "../static/header.php" ?>
 <script src="../js/adminPanelHeaderScript.js"></script>
 
 <!--Produkty -->
