@@ -41,7 +41,7 @@
             <?php  
             if (isset($_SESSION['zalogowany']))
             {  
-                echo "<li class='nav-item'><a class='nav-link' href='#'>Moje konto</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='userpanel/userpanel.php'>Moje konto</a></li>";
             }
             else if (isset($_SESSION['admin']))
             {
