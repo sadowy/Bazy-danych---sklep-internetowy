@@ -48,23 +48,44 @@ session_start();
 		
 		<form action="addProduct.php" method="post">
 		
-        IDKategorii :                     <br> <input type="number" name="CategoryID">
-	                                       <br/>
-		IDMarki:                          <br> <input type="number" name="BrandID">
-	                                       <br/>
-		Tytuł:                             <br> <input type="text" size="75" name="Title">
-	                                       <br/>
-		Cena:                              <br> <input type="number" name="Price">
-	                                       <br/>
-		Opis:                              <br> <textarea rows="30" cols="100" name="Description"></textarea>      
-	                                       <br/>
-		Zdjęcie : <br> <input type="text" size="75" name="Photos">
-	                                       <br/>	
-		Tagi:                              <br> <input type="text" size="75" name="Tags">
-	                                       <br/>
+		<form>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="CategoryID">ID Kategorii :</label>
+      <input type="number" class="form-control" name="CategoryID" placeholder="Kategoria">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="BrandID">ID Marki :</label>
+      <input type="number" class="form-control" name="BrandID" placeholder="Marka">
+    </div>
+  </div>
+		
+		<div class="form-group">
+		<label for="Title">Tytuł :</label>
+        <br> <input type="text" class="form-control" name="Title" placeholder="Podaj Tytuł wystawianego przedmiotu"><br/></div>
+  
+  <div class="form-row">
+		<div class="form-group col-md-2">
+      <label for="Price">Cena :</label>
+      <input type="number" class="form-control" name="Price" placeholder="Bogactwo">
+    </div>
+  </div>
+		 
+<h1 style="color: #7d9801">Dodaj Nową Gruszkę</h1>
+   <div class="form-group">
+      <label for="Description">Opis :</label>
+      <textarea class="form-control" rows="20" name="Description"></textarea><br>
+      		
+	<div class="form-group">
+		<label for="Photos">Zdjęcie :</label>
+		<br> <input type="text" class="form-control" name="Photos" placeholder="Wpisz ścieżkę do zdjęcia .jpg"><br/></div>	
+	<div class="form-group">
+		<label for="Tags">Tagi :</label>
+		<br> <input type="text" class="form-control" name="Tags" placeholder="Podaj Tagi do wyszukania przedmiotu"><br/></div>
         <br>
         <br>
-        <input type="submit" value="Dodaj Produkt">
+        <button type="submit" class="btn btn-primary">Dodaj Produkt</button>
         <br>
         <br>
         

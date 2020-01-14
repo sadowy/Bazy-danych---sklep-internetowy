@@ -24,11 +24,11 @@
 
 	if(!mysqli_query($con,$sql))
 	{
-		echo 'Dodanie nie powiodło sie';
+		echo '<h1 style="color: #7d9801">Coś nie Pykło :/</h1>';
 	}
 	else
 	{
-		echo 'Dodano Produkt';
+		echo '<h1 style="color: #7d9801">Wystawiono Gruszkę na Sprzedaż :D</h1>';
 	}
 	
 	header("refresh:2; url=products.php");
