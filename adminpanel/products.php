@@ -127,29 +127,52 @@ mysqli_close($baza);
         
 
       </div>
+	  <form enctype="multipart/form-data" action="addProduct.php" method="post">
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="CategoryID">ID Kategorii :</label>
+      <input type="number" class="form-control" name="CategoryID" placeholder="Kategoria">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="BrandID">ID Marki :</label>
+      <input type="number" class="form-control" name="BrandID" placeholder="Marka">
+    </div>
+  </div>
+		
+		<div class="form-group">
+		<label for="Title">Tytuł :</label>
+        <br> <input type="text" class="form-control" name="Title" placeholder="Podaj tytuł wystawianego przedmiotu"><br/></div>
+  
+  <div class="form-row">
+		<div class="form-group col-md-2">
+      <label for="Price">Cena :</label>
+      <input type="number" class="form-control" name="Price" placeholder="Bogactwo">
+    </div>
+  </div>
+		 
+<h2 style="color: #7d9801">Dodaj nową Gruszkę</h2>
+   <div class="form-group">
+      <label for="Description">Opis :</label>
+      <textarea class="form-control" rows="20" name="Description"></textarea><br>
+      		
+	<div class="form-group">
+		<label for="image">Zdjęcie :</label>
+		<br> <input type="file" class="form-control-file" name="image"><br/></div>	
+	<div class="form-group">
+		<label for="Tags">Tagi :</label>
+		<br> <input type="text" class="form-control" name="Tags" placeholder="Podaj Tagi dla łatwiejszego wyszukiwania przedmiotu"><br/></div>
+        <br>
+        <br>
+        <button type="submit" name="upload" class="btn btn-primary">Dodaj Produkt</button>
+        <br>
+        <br>
+        
+		</form>
+      </div>
       
       
-      <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
-        </div> 
-        <div class="modal" tabindex="-1" role="dialog" id="formModal">
-          <form>
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Napisz swoją opinię</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                  </div>
+     
                 
               </div>
             </div>
@@ -159,16 +182,7 @@ mysqli_close($baza);
 
       <div class="collapse" id="collapse1">
         
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        </div>
+        
 
       </div>
 
