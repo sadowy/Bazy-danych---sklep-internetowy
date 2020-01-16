@@ -45,30 +45,87 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">PRODUKTY</h2>
           </div>
         </div>
-		
-		<form action="addProduct.php" method="post">
-		
-        IDKategorii :                     <br> <input type="number" name="CategoryID">
-	                                       <br/>
-		IDMarki:                          <br> <input type="number" name="BrandID">
-	                                       <br/>
-		Tytuł:                             <br> <input type="text" size="75" name="Title">
-	                                       <br/>
-		Cena:                              <br> <input type="number" name="Price">
-	                                       <br/>
-		Opis:                              <br> <textarea rows="30" cols="100" name="Description"></textarea>      
-	                                       <br/>
-		Zdjęcie : <br> <input type="text" size="75" name="Photos">
-	                                       <br/>	
-		Tagi:                              <br> <input type="text" size="75" name="Tags">
-	                                       <br/>
+              <?php
+
+$baza=mysqli_connect("localhost","root","","gruszka");
+
+if (mysqli_connect_errno())
+
+{echo "Wystąpił błąd połączenia z bazą";}
+
+$wynik = mysqli_query($baza,"SELECT * FROM products");
+$pathx = "../productphotos/";
+
+
+ echo "<table >";
+            echo "<tr>";
+
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "ID";
+            echo "</td>";
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "ID kategorii";
+            echo "</td>";
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "ID Brandu";
+            echo "</td>";
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "Tytuł";
+            echo "</td>";
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "Cena";
+            echo "</td>";
+            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "Opis";
+            echo "</td>";
+			echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "Zdjęcie";
+			echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
+            echo "Tagi";
+            echo "</td>";
+            echo "</tr>";
+
+            while($row = mysqli_fetch_array($wynik))
+            {
+                echo "<tr>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['ID']; 
+                echo "</td>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['CategoryID']; 
+                echo "</td>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['BrandID']; 
+                echo "</td>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['Title'];  
+                echo "</td>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['Price'];  
+                echo "</td>";
+                echo "<td style='border=1px solid black'>";
+                echo $row['Description'];  
+                echo "</td>";
+				echo "<td style='border=1px solid black'>";
+                echo '<img class="img-fluid" width="50" height="50" src="'.$pathx.$row["Photos"].'">';  
+				echo "<td style='border=1px solid black'>";
+                echo $row['Tags'];  
+                echo "</td>";
+                echo "</tr>\n";
+            }
+            echo "</table>";
+
+           
+mysqli_close($baza);
+
+?> 
         <br>
         <br>
-        <input type="submit" value="Dodaj Produkt">
+        <br>
         <br>
         <br>
         
-		</form>
+
       </div>
       
       
