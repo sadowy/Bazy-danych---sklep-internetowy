@@ -44,8 +44,7 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">KONTO ADMINA</h2>
           </div>
         </div>
-        Zmień hasło<p>
-        Zmień adres e-mail 
+       <a href="changeform.php">Zmień hasło</a><p>
         <br>
         <br>
         <br>
