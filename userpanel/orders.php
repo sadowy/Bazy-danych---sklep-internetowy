@@ -17,11 +17,10 @@ session_start();
   <link href="../css/shop-item.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <?php include "../static/header.php" ?>
-<script src="../js/adminPanelHeaderScript.js"></script>
+<script src="../js/userPanelHeaderScript.js"></script>
 
 <!--Produkty -->
 <div class="container">
@@ -41,118 +40,15 @@ session_start();
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">ZAMÓWIENIA</h2>
+              <h2 class="card-title" style="color: #7d9801">KONTO UŻYTKOWNIKA</h2>
           </div>
         </div>
-		<h6  style="color: #7d9801">Szczegóły Twoich zamówień</h2>
-        <?php
-
-$baza=mysqli_connect("localhost","root","","gruszka");
-
-if (mysqli_connect_errno())
-
-{echo "Wystąpił błąd połączenia z bazą";}
-
-//Ustawić względem wyświetlanych zamówień.
-
-$wynik = mysqli_query($baza,"SELECT * FROM orders");
-
-
- echo "<table >";
-            echo "<tr>";
-
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "ID zamówienia";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Godzina zamówienia";
-            echo "</td>";
-           
-          
-
-            while($row = mysqli_fetch_array($wynik))
-            {
-               
-                echo "<td style='border=1px solid black'>";
-                echo $row['IDszczegolyzamowienia']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['TimeStamp'];  
-                echo "</td>";
-	
-            }
-            echo "</table>";
-
-           
-mysqli_close($baza);
-
-?> 
-
- <?php
-
-$baza=mysqli_connect("localhost","root","","gruszka");
-
-if (mysqli_connect_errno())
-
-{echo "Wystąpił błąd połączenia z bazą";}
-//Ustawić względem wyświetlanych zamówień.
-$wynik = mysqli_query($baza,"SELECT * FROM orders");
-
-
- echo "<table >";
-            echo "<tr>";
-
-          
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "ID zamówienia";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "ID Towaru";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Ilość";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Wartość zamówienia";
-            echo "</td>";
-            
-
-            while($row = mysqli_fetch_array($wynik))
-            {
-               
-                echo "<td style='border=1px solid black'>";
-                echo $row['idZamowienia']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['idTowaru']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Ilosc'];  
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Wartosc'];  
-                echo "</td>";
-                
-              
-                echo "</tr>\n";
-            }
-            echo "</table>";
-
-           
-mysqli_close($baza);
-
-?>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
 
       </div>
       
       
       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
+
         </div> 
         <div class="modal" tabindex="-1" role="dialog" id="formModal">
           <form>
@@ -180,21 +76,6 @@ mysqli_close($baza);
           </form>
       </div> 
 
-      <div class="collapse" id="collapse1">
-        
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        </div>
-
-      </div>
-
     </div>
     
   </div>
@@ -207,10 +88,10 @@ mysqli_close($baza);
       <p class="m-0 text-center text-white">Copyright &copy; Gruszka.net 2019</p>
     </div>
   </footer>
-  <script src="../https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
 
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 </body>

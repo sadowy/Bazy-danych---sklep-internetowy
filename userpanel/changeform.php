@@ -65,6 +65,7 @@ return output;
 <body>
     <!-- Navigation -->
     <?php include "../static/header.php" ?>
+    <script src="../js/userPanelHeaderScript.js"></script>
 
  <body style= "color: #7d9801"> <!-- Do wrzucenia z CSS -->
  <br /> <br /> 
