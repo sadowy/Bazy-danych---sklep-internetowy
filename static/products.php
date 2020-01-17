@@ -15,11 +15,12 @@
                           $Category = $row['CategoryID'];
                           $Brand = $row['BrandID'];
                           $Title = $row['Title'];
+                          $Quantity = $row['Quantity'];
                           $Price = $row['Price'];
                           $Description = $row['Description'];
                           $Photo = $row['Photos'];
                           $Tags = $row['Tags'];
-                          $product = new Product($ID, $Category, $Brand, $Title, $Price, $Description, $Photo, $Tags);
+                          $product = new Product($ID, $Category, $Brand, $Title,$Quantity, $Price, $Description, $Photo, $Tags);
                           $products[] = $product;
                       }
                       $result->free();
@@ -40,11 +41,12 @@
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-                          <button class="btn btn-primary col-3 m-2" type="button">
+                          <a class="btn col-3 m-2" href="logic/addToCart.php" type="button">
                               Dodaj do koszyka
-                            </button>
+                          </a>
                         </div>
                         <h4><?php echo $products[$i]->Price; ?> zł</h4>
+                        <h5><?php echo "Na stanie: <span style=\"color: #e1e8f0\">".$products[$i]->Quantity."</span>"; ?></h5>
                         <h6 class="mt-4">Opis:</h6>
                         <p class="card-text" style="color: #e1e8f0"><?php echo $products[$i]->Description; ?></p>
                       </div>

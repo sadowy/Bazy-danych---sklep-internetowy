@@ -44,13 +44,26 @@ nav.navbar
   background-color: #121212;
 }
 
-button.btn, button.btn:focus,  button.btn:active, .bootstrap-select 
+ button.btn, button.btn:focus,  button.btn:active, .bootstrap-select 
 {
   background-color: #7d9801 !important;
   border-color: #12121200 !important;
   box-shadow: none !important;
-  
 }
+a.btn, a.btn:focus,  a.btn:active
+{
+  background-color: #7d9801 !important;
+  border-color: #12121200 !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+}
+
+a.btn:hover
+{
+  background-color: #516301 !important;
+  color: #ffffff !important;
+}
+
 button.btn:hover
 {
   background-color: #516301 !important;
