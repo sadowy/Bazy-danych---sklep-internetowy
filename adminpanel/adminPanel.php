@@ -44,7 +44,8 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">KONTO ADMINA</h2>
           </div>
         </div>
-       <a href="changeform.php">Zmień hasło</a><p>
+        Zmień hasło<p>
+        Zmień adres e-mail 
         <br>
         <br>
         <br>
@@ -55,7 +56,28 @@ session_start();
       </div>
       
       
-     
+      <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
+
+        </div> 
+        <div class="modal" tabindex="-1" role="dialog" id="formModal">
+          <form>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Napisz swoją opinię</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                  </div>
                 
               </div>
             </div>
@@ -63,7 +85,20 @@ session_start();
           </form>
       </div> 
 
-     
+      <div class="collapse" id="collapse1">
+        
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+          <hr>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+          <hr>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        </div>
+
+      </div>
 
     </div>
     

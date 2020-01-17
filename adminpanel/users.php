@@ -44,80 +44,7 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">UŻYTKOWNICY</h2>
           </div>
         </div>
-        <?php
-
-$baza=mysqli_connect("localhost","root","","gruszka");
-
-if (mysqli_connect_errno())
-
-{echo "Wystąpił błąd połączenia z bazą";}
-
-$wynik = mysqli_query($baza,"SELECT * FROM users");
-
-
- echo "<table >";
-            echo "<tr>";
-
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "ID";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Mail";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Imię";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Nazwisko";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Telefon";
-            echo "</td>";
-            echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Miasto";
-            echo "</td>";
-			echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Ulica";
-			echo "<td style='border=1px solid black;Font-size=18;Font-Weight=bold'>";
-            echo "Kod pocztowy";
-            echo "</td>";
-            echo "</tr>";
-
-            while($row = mysqli_fetch_array($wynik))
-            {
-                echo "<tr>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['ID']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Mail']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Name']; 
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Surname'];  
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['Phone'];  
-                echo "</td>";
-                echo "<td style='border=1px solid black'>";
-                echo $row['City'];  
-                echo "</td>";
-				echo "<td style='border=1px solid black'>";
-                echo $row['Street'];  
-				echo "<td style='border=1px solid black'>";
-                echo $row['Postal'];  
-        
-                echo "</td>";
-                echo "</tr>\n";
-            }
-            echo "</table>";
-
-           
-mysqli_close($baza);
-
-?> 
+        Tabela z danymi zarejestrowanych użytkowników.
         <br>
         <br>
         <br>
@@ -126,7 +53,6 @@ mysqli_close($baza);
         
 
       </div>
-	  
       
       
       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
