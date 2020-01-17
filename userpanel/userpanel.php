@@ -17,7 +17,6 @@ session_start();
   <link href="../css/shop-item.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <?php include "../static/header.php" ?>

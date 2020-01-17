@@ -40,8 +40,9 @@
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-                          <button class="btn btn-primary col-3 m-2" type="button">
+						  <button class="btn btn-primary col-3 m-2" type="button">
                               Dodaj do koszyka
+                          
                             </button>
                         </div>
                         <h4><?php echo $products[$i]->Price; ?> zł</h4>
