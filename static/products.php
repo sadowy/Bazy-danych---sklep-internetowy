@@ -34,22 +34,33 @@
                   
 
                   ?>
+                  <form action="logic/addToCart.php" method="post">
                     <div class="card my-4">
                       <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
                       <div class="card-body" style="background-color: #47484b">
                         <div class="d-flex justify-content-between ">
+                        
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-                          <a class="btn col-3 m-2" href="logic/addToCart.php" type="button">
-                              Dodaj do koszyka
-                          </a>
+                          <?php
+                            if(isset($_SESSION['id']))
+                            {
+                              echo "<input type=\"hidden\" name=\"ProductID\" value=\"".$products[$i]->ID."\">";
+                              echo "<input type=\"hidden\" name=\"UserID\" value=\"".$_SESSION['id']."\">";
+                              echo "<button class=\"btn btn-primary col-3 m-2\" type=\"submit\">";
+                              echo  "Dodaj do koszyka";
+                              echo "</button>";
+                            }      
+                          ?>
                         </div>
+                        
                         <h4><?php echo $products[$i]->Price; ?> zł</h4>
                         <h5><?php echo "Na stanie: <span style=\"color: #e1e8f0\">".$products[$i]->Quantity."</span>"; ?></h5>
                         <h6 class="mt-4">Opis:</h6>
                         <p class="card-text" style="color: #e1e8f0"><?php echo $products[$i]->Description; ?></p>
                       </div>
+                  </form>
                       
                       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
                         <!--Button Pokaż recenzje-->
