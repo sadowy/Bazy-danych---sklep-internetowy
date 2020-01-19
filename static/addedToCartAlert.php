@@ -9,7 +9,7 @@
                 echo "<p>Dodano produkt do koszyka.</p>";
                 echo  "</div>";
               }
-              unset($_SESSION['addedReview']);
+              unset($_SESSION['addedToCart']);
             }
               
       ?>

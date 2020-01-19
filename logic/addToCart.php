@@ -22,9 +22,17 @@
     $result = mysqli_query($db,$selectCart);
     $CartID = mysqli_fetch_assoc($result);
   }
-  $query = "INSERT INTO cartitem (CartID, productID, Quantity)
+  $query1 = "SELECT cartitem.ID, cartitem.Quantity FROM cartitem, products WHERE cartitem.ProductID = products.ID AND cartitem.ProductID = ".$_POST['ProductID'];
+  $result1 = mysqli_query($db,$query1);
+  $Product = mysqli_fetch_assoc($result1);
+  if($Product != null){
+    $query = "UPDATE cartitem SET Quantity = ".++$Product['Quantity']." WHERE cartitem.ID = ".$Product['ID'];
+  }
+  else{
+    $query = "INSERT INTO cartitem (CartID, productID, Quantity)
     VALUES (".$CartID['ID'].", ".$_POST['ProductID'].", 1);";
-    mysqli_query($db, $query);
+  }
+  mysqli_query($db, $query);
     $_SESSION['addedToCart'] = true;
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
