@@ -29,7 +29,7 @@ if ($db->connect_errno!=0)
 
 <body>
 <?php
-$query = "SELECT products.ID, products.Title, products.Price, products.Photos, cartitem.Quantity FROM products, cartitem, cart WHERE cart.UserID = 5 AND cartitem.CartID = cart.ID 
+$query = "SELECT products.ID, products.Title, products.Price, products.Photos, cartitem.Quantity FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
 AND cartitem.ProductID = products.ID";
 $response = mysqli_query($db,$query);
 ?>
