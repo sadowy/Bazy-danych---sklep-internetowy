@@ -16,6 +16,7 @@
         <ul class="navbar-nav ml-auto">  
           
                     <?php 
+                    require_once "../logic/connect.php";
                     if  ((isset($_SESSION['zalogowany'])) || (isset($_SESSION['admin'])))
                     {
                     echo "<li class='nav-item'>";

@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('classes/product.php');
+require_once "logic/connect.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

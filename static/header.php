@@ -65,7 +65,6 @@
               echo "<li class='nav-item'>";
                 echo "<a id=\"cartLink\" class='nav-link' href='cart.php' style='color: #ffffff'>";
                 echo " <i class=\"fas fa-shopping-cart\"></i>";
-                require_once "logic/connect.php";
                 $db = mysqli_connect("$host", "$db_user", '', "$db_name");
 
                 if ($db->connect_errno!=0)

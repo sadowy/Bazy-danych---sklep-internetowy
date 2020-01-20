@@ -1,6 +1,6 @@
 <?php
 session_start();
-$polaczenie = mysqli_connect("localhost", "root", "", "gruszka") or die("Connection Error: " . mysqli_error($polaczenie));
+require_once "../logic/connect.php";$polaczenie = mysqli_connect("localhost", "root", "", "gruszka") or die("Connection Error: " . mysqli_error($polaczenie));
 if (count($_POST) > 0) {
     $result = mysqli_query($polaczenie, "SELECT *from users WHERE mail='" . $_SESSION["mail"] . "'");
     $row = mysqli_fetch_array($result);
