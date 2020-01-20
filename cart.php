@@ -35,9 +35,10 @@ $response = mysqli_query($db,$query);
 ?>
 
 <?php include "static/header.php" ?>
-
   <!--Produkty -->
   <div class="container mt-4">
+    
+<?php if(isset($_SESSION['productsInCart'])) : ?>
     <div class = "my-4 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
       PODSUMOWANIE
     </div>
@@ -83,7 +84,13 @@ $response = mysqli_query($db,$query);
     </tr>
   </tbody>
 </table>
-  
+<?php endif; ?>
+<?php if(!isset($_SESSION['productsInCart'])) : ?>
+<!--Jeżeli nie ma produktów w koszyku -->
+<div class = "m-5 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
+      Dodaj produkt aby pojawił się w koszyku
+</div>
+<?php endif; ?>
   </div>
 
   <!-- Footer -->

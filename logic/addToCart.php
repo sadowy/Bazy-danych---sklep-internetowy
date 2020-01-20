@@ -39,5 +39,6 @@
   }
   mysqli_query($db, $query);
     $_SESSION['addedToCart'] = true;
+    $_SESSION['productsInCart'] = true;
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
