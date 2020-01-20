@@ -40,10 +40,19 @@
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-						  <button class="btn btn-primary col-3 m-2" type="button">
-                              Dodaj do koszyka
-                          
-                            </button>
+                         <div class="col-md-3">
+
+                        <form method="post" action="cart.php?action=add&id=<?php echo $row["ID"]; ?>">
+
+                            <div class="product">
+                                <input type="text" name="quantity" class="form-control" value="1">
+                                <input type="hidden" name="hidden_name" value="<?php echo $products[$i]->Title; ?>">
+                                <input type="hidden" name="hidden_price" value="<?php echo $products[$i]->Price; ?>">
+                                <input type="submit" name="add" style="background-color: #7d9801; margin-top: 5px;" class="btn btn-success"
+                                       value="Dodaj do Koszyka">
+                            </div>
+                        </form>
+                    </div>
                         </div>
                         <h4><?php echo $products[$i]->Price; ?> zł</h4>
                         <h6 class="mt-4">Opis:</h6>
@@ -85,8 +94,8 @@
                                       </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Wyślij opinię</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Zamknij</button>
+                                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
                                   </div>
                               </div>
                             </div>
