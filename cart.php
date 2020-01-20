@@ -38,7 +38,7 @@ $response = mysqli_query($db,$query);
 
   <!--Produkty -->
   <div class="container mt-4">
-    <div class = "col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
+    <div class = "my-4 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
       PODSUMOWANIE
     </div>
   <table class="table table-dark">
@@ -56,6 +56,7 @@ $response = mysqli_query($db,$query);
   <tbody>
     <?php
     $i = 1;
+    $total = 0;
     while($result = mysqli_fetch_assoc($response)){
       echo "<form action=\"logic/deleteFromCart.php\" method=\"post\">";
       echo "<tr style=\"text-align: center;\">";
@@ -69,9 +70,17 @@ $response = mysqli_query($db,$query);
       echo "<td style=\"vertical-align: middle;\"><button type=submit style=\"padding: 0;border: none;background: none;\" href=\"#\" title=\"Delete\"><i style=\"color: red;\" class=\"material-icons\">&#xE872;</i></button></td>";
       echo "</tr>";
       echo "</form>";
+      $total += $result['Price']*$result['Quantity'];
       $i++;
     }
     ?>
+    <tr style="text-align: center; vertical-align: middle;">
+      <form action="logic/addOrder.php" method="post">
+      <td colspan="4"></td>
+      <td style="text-align: center; vertical-align: middle;">Razem do Zapłaty: </td>
+      <td style="text-align: center; vertical-align: middle;"><?php echo $total." zł" ?></td>
+      <td><button class="btn btn-primary  m-2" type=submit>Zamawiam</button></td>
+    </tr>
   </tbody>
 </table>
   

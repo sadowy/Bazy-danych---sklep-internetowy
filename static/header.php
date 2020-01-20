@@ -65,6 +65,20 @@
               echo "<li class='nav-item'>";
                 echo "<a id=\"cartLink\" class='nav-link' href='cart.php' style='color: #ffffff'>";
                 echo " <i class=\"fas fa-shopping-cart\"></i>";
+                require_once "logic/connect.php";
+                $db = mysqli_connect("$host", "$db_user", '', "$db_name");
+
+                if ($db->connect_errno!=0)
+                {
+                  echo "Error: ".$db->connect_errno;
+                }
+                $queryIle = "SELECT SUM(cartitem.Quantity) FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
+                AND cartitem.ProductID = products.ID";
+                $responseIle = mysqli_query($db,$queryIle);
+                $resultIle = mysqli_fetch_assoc($responseIle);
+                if($resultIle['SUM(cartitem.Quantity)'] != 0){
+                  echo "<span class='badge badge-warning' id='lblCartCount'> ".$resultIle['SUM(cartitem.Quantity)']." </span>";
+                }
                 echo"</a>";
                 echo "</li>";
             }
