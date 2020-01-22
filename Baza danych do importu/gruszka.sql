@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2020, 17:11
+-- Czas generowania: 17 Sty 2020, 21:46
 -- Wersja serwera: 10.4.8-MariaDB
 -- Wersja PHP: 7.3.10
 
@@ -61,15 +61,16 @@ INSERT INTO `brands` (`ID`, `Name`) VALUES
 
 CREATE TABLE `cart` (
   `ID` int(11) NOT NULL,
-  `UserID` int(11) NOT NULL
+  `UserID` int(11) NOT NULL,
+  `CartItemID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Zrzut danych tabeli `cart`
 --
 
-INSERT INTO `cart` (`ID`, `UserID`) VALUES
-(16, 15);
+INSERT INTO `cart` (`ID`, `UserID`, `CartItemID`) VALUES
+(1, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE `cartitem` (
 --
 
 INSERT INTO `cartitem` (`ID`, `CartID`, `ProductID`, `Quantity`) VALUES
-(41, 16, 1, 1);
+(1, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -116,30 +117,18 @@ INSERT INTO `categories` (`ID`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `order`
+-- Struktura tabeli dla tabeli `orders`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `ID` int(11) NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,
+  `IDszczegolyzamowienia` int(11) NOT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `City` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `Street` varchar(100) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `Postal` int(7) NOT NULL,
   `Phone` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `orderitem`
---
-
-CREATE TABLE `orderitem` (
-  `ID` int(11) NOT NULL,
-  `OrderID` int(11) NOT NULL,
-  `ProductID` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
@@ -207,9 +196,21 @@ INSERT INTO `reviews` (`ID`, `ProductID`, `CustomerID`, `Content`, `TimeStamp`) 
 (4, 11, 5, 'No, wkońcu porządny laptop od Della. Nie polecam.', '2019-12-18'),
 (12, 4, 5, 'Daję radę.', '2019-12-18'),
 (13, 1, 5, 'rfs', '2019-12-18'),
-(14, 2, 5, 'test1234', '2020-01-17'),
-(15, 1, 5, 'gówno', '2020-01-19'),
-(16, 1, 5, 'a', '2020-01-19');
+(14, 2, 5, 'test1234', '2020-01-17');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `szczegolyzamowienia`
+--
+
+CREATE TABLE `szczegolyzamowienia` (
+  `id` int(11) NOT NULL,
+  `idZamowienia` int(11) NOT NULL,
+  `idTowaru` int(11) NOT NULL,
+  `Ilosc` int(11) NOT NULL,
+  `Wartosc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -235,9 +236,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `Mail`, `Password`, `Name`, `Surname`, `Phone`, `City`, `Street`, `Postal`) VALUES
 (1, 'admin@gruszka.net', 'admin', 'admin', 'admin', 123456789, 'Jelenia Góra', 'Wolności', '58-360'),
-(5, 'janusz@wp.pl', '123', 'Janusz', 'Nowak', 111222333, 'Jelenia Góra', 'Wolności 245', '58-360'),
-(15, 'wojtek@wp.pl', '1234', 'Wojtek', 'Pisklewicz', 111222333, 'Wałbrzych', 'Wolności', '58-350'),
-(16, 'adam@wp.pl', '1234', 'Adam', 'Wojtyła', 123456789, 'Jelenia Góra', 'Wolności 245', '58-360');
+(5, 'janusz@wp.pl', '123', 'Janusz', 'Nowak', 111222333, 'Jelenia Góra', 'Wolności 245', '58-360');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -254,7 +253,8 @@ ALTER TABLE `brands`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `ClientID` (`UserID`);
+  ADD KEY `ClientID` (`UserID`),
+  ADD KEY `CartItemID` (`CartItemID`);
 
 --
 -- Indeksy dla tabeli `cartitem`
@@ -271,18 +271,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indeksy dla tabeli `order`
+-- Indeksy dla tabeli `orders`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeksy dla tabeli `orderitem`
---
-ALTER TABLE `orderitem`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `idTowaru` (`ProductID`),
-  ADD KEY `idZamowienia` (`OrderID`);
+  ADD KEY `idKlienta` (`ClientID`),
+  ADD KEY `idSzczegolyZamowienia` (`IDszczegolyzamowienia`);
 
 --
 -- Indeksy dla tabeli `products`
@@ -297,6 +291,14 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CustomerID` (`CustomerID`),
   ADD KEY `reviews_ibfk_2` (`ProductID`);
+
+--
+-- Indeksy dla tabeli `szczegolyzamowienia`
+--
+ALTER TABLE `szczegolyzamowienia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idTowaru` (`idTowaru`),
+  ADD KEY `idZamowienia` (`idZamowienia`);
 
 --
 -- Indeksy dla tabeli `users`
@@ -318,25 +320,19 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT dla tabeli `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `categories`
 --
 ALTER TABLE `categories`
   MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT dla tabeli `orderitem`
---
-ALTER TABLE `orderitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `products`
@@ -348,13 +344,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT dla tabeli `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -364,7 +360,8 @@ ALTER TABLE `users`
 -- Ograniczenia dla tabeli `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`CartItemID`) REFERENCES `cartitem` (`ID`);
 
 --
 -- Ograniczenia dla tabeli `cartitem`
@@ -374,10 +371,10 @@ ALTER TABLE `cartitem`
   ADD CONSTRAINT `cartitem_ibfk_3` FOREIGN KEY (`CartID`) REFERENCES `cart` (`ID`);
 
 --
--- Ograniczenia dla tabeli `orderitem`
+-- Ograniczenia dla tabeli `orders`
 --
-ALTER TABLE `orderitem`
-  ADD CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `order` (`ID`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`IDszczegolyzamowienia`) REFERENCES `szczegolyzamowienia` (`id`);
 
 --
 -- Ograniczenia dla tabeli `reviews`
@@ -385,6 +382,12 @@ ALTER TABLE `orderitem`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ID`);
+
+--
+-- Ograniczenia dla tabeli `szczegolyzamowienia`
+--
+ALTER TABLE `szczegolyzamowienia`
+  ADD CONSTRAINT `szczegolyzamowienia_ibfk_2` FOREIGN KEY (`idZamowienia`) REFERENCES `orders` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

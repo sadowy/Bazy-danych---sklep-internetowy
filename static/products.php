@@ -11,6 +11,9 @@
                   //$queryProducts = "SELECT * FROM products WHERE CategoryID = 1";
                   if ($result = $mysqli->query($queryProducts)) {
                       while ($row = $result->fetch_assoc()) {
+                          if($row['Quantity'] == 0){
+                            continue;
+                          }
                           $ID = $row['ID'];
                           $Category = $row['CategoryID'];
                           $Brand = $row['BrandID'];

@@ -82,13 +82,14 @@ $response = mysqli_query($db,$query);
       $i++;
     }
     ?>
-    <tr style="text-align: center; vertical-align: middle;">
-      <form action="logic/addOrder.php" method="post">
-      <td colspan="4"></td>
-      <td style="text-align: center; vertical-align: middle;">Razem do Zapłaty: </td>
-      <td style="text-align: center; vertical-align: middle;"><?php echo $total." zł" ?></td>
-      <td><button class="btn btn-primary  m-2" type=submit>Zamawiam</button></td>
-    </tr>
+    <form action="logic/addOrder.php" method="post">
+      <tr style="text-align: center; vertical-align: middle;">
+        <td colspan="4"></td>
+        <td style="text-align: center; vertical-align: middle;">Razem do Zapłaty: </td>
+        <td style="text-align: center; vertical-align: middle;"><?php echo $total." zł" ?></td>
+        <td><button class="btn btn-primary  m-2" type="submit">Zamawiam</button></td>
+      </tr>
+    </form>
   </tbody>
 </table>
 <?php endif; ?>
