@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('classes/product.php');
+require_once "logic/connect.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +25,7 @@ require('classes/product.php');
 
 <?php include "static/header.php" ?>
 <?php include "static/addedReviewAlert.php" ?>
+<?php include "static/addedToCartAlert.php" ?>
 
   <!--Produkty -->
   <div class="container">

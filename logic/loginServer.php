@@ -56,6 +56,14 @@
           $_SESSION['mail'] = $wiersz['Mail'];
           $_SESSION['userName'] = $wiersz['Name'];
 
+          //Przypisanie ID koszyka danego uzytkownika do zmiennej sesyjnej 
+          $selectCart = "SELECT ID FROM cart WHERE UserID = ".$_SESSION['id'];
+          $result = @$polaczenie->query($selectCart);
+          $CartID = $result->fetch_assoc();
+          if($CartID != null){
+            $_SESSION['userCartID'] = $CartID['ID'];
+          }
+
           unset($_SESSION['blad']);
           $rezultat->free_result();
           header('Location: ../index.php');

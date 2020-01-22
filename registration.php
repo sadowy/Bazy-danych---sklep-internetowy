@@ -1,4 +1,6 @@
-<?php include('logic/registrationServer.php') 
+<?php 
+include('logic/registrationServer.php');
+
 ?>
 
 <!DOCTYPE html>

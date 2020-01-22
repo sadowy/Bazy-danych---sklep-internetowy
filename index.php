@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('classes/product.php');
+require_once "logic/connect.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +24,13 @@ require('classes/product.php');
 <body>
 
 <?php include "static/header.php" ?>
+<?php include "static/addedReviewAlert.php" ?>
+<?php include "static/addedToCartAlert.php" ?>
 
   <!--Produkty -->
   <div class="container">
   
     <div class="row">
-      <?php if(isset($_SESSION['addedReview'])){
-              if($_SESSION['addedReview'] == true){
-                echo "<div class=\"alert alert-success col-12 mt-4\" role=\"alert\">";
-                echo  "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">";
-                echo  "<span aria-hidden=\"true\">&times;</span>";
-                echo  "</button>";
-                echo  "<h4 class=\"alert-heading\">Udało się!</h4>";
-                echo "<p>Dziękujemy za podzielenie się swoją opinią.</p>";
-                echo  "</div>";
-              }
-              unset($_SESSION['addedReview']);
-            }
-              
-      ?>
     
       <!--Kategorie-->
       <?php include "static/categories.php" ?>

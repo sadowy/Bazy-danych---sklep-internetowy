@@ -11,15 +11,19 @@
                   //$queryProducts = "SELECT * FROM products WHERE CategoryID = 1";
                   if ($result = $mysqli->query($queryProducts)) {
                       while ($row = $result->fetch_assoc()) {
+                          if($row['Quantity'] == 0){
+                            continue;
+                          }
                           $ID = $row['ID'];
                           $Category = $row['CategoryID'];
                           $Brand = $row['BrandID'];
                           $Title = $row['Title'];
+                          $Quantity = $row['Quantity'];
                           $Price = $row['Price'];
                           $Description = $row['Description'];
                           $Photo = $row['Photos'];
                           $Tags = $row['Tags'];
-                          $product = new Product($ID, $Category, $Brand, $Title, $Price, $Description, $Photo, $Tags);
+                          $product = new Product($ID, $Category, $Brand, $Title,$Quantity, $Price, $Description, $Photo, $Tags);
                           $products[] = $product;
                       }
                       $result->free();
@@ -33,31 +37,33 @@
                   
 
                   ?>
+                  <form action="logic/addToCart.php" method="post">
                     <div class="card my-4">
                       <img class="card-img-top img-fluid" src="productphotos/<?php echo $products[$i]->Photo;?>" alt="">
                       <div class="card-body" style="background-color: #47484b">
                         <div class="d-flex justify-content-between ">
+                        
                           <div class="d-flex" style="align-items: center;justify-content: left;">
                               <h2 class="card-title" style="color: #7d9801"><?php echo $products[$i]->Title; ?></h2>
                           </div>
-                         <div class="col-md-3">
-
-                        <form method="post" action="cart.php?action=add&id=<?php echo $row["ID"]; ?>">
-
-                            <div class="product">
-                                <input type="text" name="quantity" class="form-control" value="1">
-                                <input type="hidden" name="hidden_name" value="<?php echo $products[$i]->Title; ?>">
-                                <input type="hidden" name="hidden_price" value="<?php echo $products[$i]->Price; ?>">
-                                <input type="submit" name="add" style="background-color: #7d9801; margin-top: 5px;" class="btn btn-success"
-                                       value="Dodaj do Koszyka">
-                            </div>
-                        </form>
-                    </div>
+                          <?php
+                            if(isset($_SESSION['id']))
+                            {
+                              echo "<input type=\"hidden\" name=\"ProductID\" value=\"".$products[$i]->ID."\">";
+                              echo "<input type=\"hidden\" name=\"UserID\" value=\"".$_SESSION['id']."\">";
+                              echo "<button class=\"btn btn-primary col-3 m-2\" type=\"submit\">";
+                              echo  "Dodaj do koszyka";
+                              echo "</button>";
+                            }      
+                          ?>
                         </div>
+                        
                         <h4><?php echo $products[$i]->Price; ?> zł</h4>
+                        <h5><?php echo "Na stanie: <span style=\"color: #e1e8f0\">".$products[$i]->Quantity."</span>"; ?></h5>
                         <h6 class="mt-4">Opis:</h6>
                         <p class="card-text" style="color: #e1e8f0"><?php echo $products[$i]->Description; ?></p>
                       </div>
+                  </form>
                       
                       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
                         <!--Button Pokaż recenzje-->
@@ -94,8 +100,8 @@
                                       </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Wyślij opinię</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Zamknij</button>
                                   </div>
                               </div>
                             </div>

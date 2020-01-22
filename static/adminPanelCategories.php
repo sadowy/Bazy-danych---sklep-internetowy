@@ -1,6 +1,6 @@
 
 <div class="col-lg-3" >
-    <h1 class="my-4" style="color: #7d9801">Panel Admina</h1>
+    <h1 class="my-4" style="color: #7d9801">Panel admina</h1>
     <div class="list-group" >
       <a id="adminPanelCategoriesLink1" href="adminPanel.php" class="list-group-item" >Konto admina</a>
       <a id="adminPanelCategoriesLink2" href="users.php" class="list-group-item"  >Użytkownicy</a>

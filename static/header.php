@@ -6,9 +6,11 @@
         <img id="logo" class="img-fluid" width="30" height="30" src="static/logo.png">
         Gruszka.net
       </a>
+      <nav class="navbar navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      </nav>
       
       <div class="collapse navbar-collapse" id="navbarResponsive">
       
@@ -39,7 +41,7 @@
             <?php  
             if (isset($_SESSION['zalogowany']))
             {  
-                echo "<li class='nav-item'><a class='nav-link' href='userpanel/userpanel.php'>Moje konto</a></li>";
+                echo "<li class='nav-item'><a class='nav-link'  id=\"userPanelLink\" href='userpanel/userPanel.php'>Moje konto</a></li>";
             }
             else if (isset($_SESSION['admin']))
             {
@@ -63,6 +65,19 @@
               echo "<li class='nav-item'>";
                 echo "<a id=\"cartLink\" class='nav-link' href='cart.php' style='color: #ffffff'>";
                 echo " <i class=\"fas fa-shopping-cart\"></i>";
+                $db = mysqli_connect("$host", "$db_user", '', "$db_name");
+
+                if ($db->connect_errno!=0)
+                {
+                  echo "Error: ".$db->connect_errno;
+                }
+                $queryIle = "SELECT SUM(cartitem.Quantity) FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
+                AND cartitem.ProductID = products.ID";
+                $responseIle = mysqli_query($db,$queryIle);
+                $resultIle = mysqli_fetch_assoc($responseIle);
+                if($resultIle['SUM(cartitem.Quantity)'] != 0){
+                  echo "<span class='badge badge-warning' id='lblCartCount'> ".$resultIle['SUM(cartitem.Quantity)']." </span>";
+                }
                 echo"</a>";
                 echo "</li>";
             }

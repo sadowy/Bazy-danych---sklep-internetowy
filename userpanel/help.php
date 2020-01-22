@@ -1,6 +1,6 @@
 <?php
 session_start();
-?>
+require_once "../logic/connect.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@ session_start();
 <body>
 
 <?php include "../static/header.php" ?>
-<script src="../js/adminPanelHeaderScript.js"></script>
+<script src="../js/userPanelHeaderScript.js"></script>
 
 <!--Produkty -->
 <div class="container">

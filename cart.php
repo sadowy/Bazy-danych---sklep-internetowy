@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once "logic/connect.php";
+$db = mysqli_connect("$host", "$db_user", '', "$db_name");
+
+if ($db->connect_errno!=0)
+{
+  echo "Error: ".$db->connect_errno;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,141 +22,84 @@ session_start();
 
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-item.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
 
 </head>
 
 <body>
-
-<?php include "static/header.php" ?>
-
-  <?php
-    $database_name = "gruszka";
-    $con = mysqli_connect("localhost","root","",$database_name);
-
-    if (isset($_POST["add"])){
-        if (isset($_SESSION["cart"])){
-            $item_array_id = array_column($_SESSION["cart"],"product_id");
-            if (!in_array($_GET["ID"],$item_array_id)){
-                $count = count($_SESSION["cart"]);
-                $item_array = array(
-                    'product_id' => $_GET["ID"],
-                    'item_name' => $_POST["hidden_name"],
-                    'product_price' => $_POST["hidden_price"],
-                    'item_quantity' => $_POST["quantity"],
-                );
-                $_SESSION["cart"][$count] = $item_array;
-                echo '<script>window.location="Cart.php"</script>';
-            }else{
-                echo '<script>alert("Produkt został już dodany do koszyka")</script>';
-                echo '<script>window.location="cart.php"</script>';
-            }
-        }else{
-            $item_array = array(
-                'product_id' => $_GET["ID"],
-                'item_name' => $_POST["hidden_name"],
-                'product_price' => $_POST["hidden_price"],
-                'item_quantity' => $_POST["quantity"],
-            );
-            $_SESSION["cart"][0] = $item_array;
-        }
-    }
-
-    if (isset($_GET["action"])){
-        if ($_GET["action"] == "delete"){
-            foreach ($_SESSION["cart"] as $keys => $value){
-                if ($value["product_id"] == $_GET["ID"]){
-                    unset($_SESSION["cart"][$keys]);
-                    echo '<script>alert("Produkt został usunięty z koszyka...!")</script>';
-                    echo '<script>window.location="Cart.php"</script>';
-                }
-            }
-        }
-    }
+<?php
+$query = "SELECT products.ID, products.Title, products.Price, products.Photos, cartitem.Quantity FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
+AND cartitem.ProductID = products.ID";
+$response = mysqli_query($db,$query);
 ?>
 
-<!doctype html>
-<html>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+<?php include "static/header.php" ?>
+  <!--Produkty -->
+  <div class="container mt-4">
+    
+<?php 
+  $queryHowManyInCart = "SELECT SUM(cartitem.Quantity) FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
+  AND cartitem.ProductID = products.ID";
+  $respoonseHowManyInCart = mysqli_query($db,$queryHowManyInCart);
+  $resultHowManyInCart = mysqli_fetch_assoc($respoonseHowManyInCart);
 
-        *{
-            font-family: 'Titillium Web', sans-serif;
-        }
-        .product{
-            border: 1px solid #eaeaec;
-            margin: -1px 19px 3px -1px;
-            padding: 10px;
-            text-align: center;
-            background-color: #efefef;
-        }
-        table, th, tr{
-            text-align: center;
-			background-color: #efefef;
-        }
-        .title2{
-            text-align: center;
-            color: #66afe9;
-            background-color: #efefef;
-            padding: 2%;
-        }
-        h2{
-            text-align: center;
-            color: #66afe9;
-            background-color: #efefef;
-            padding: 2%;
-        }
-        table th{
-            background-color: #efefef;
-        }
-    </style>
-<body>
-        <div style="clear: both"></div>
-        <h2 class="title2" style="color: #7d9801">Podsumowanie</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-            <tr>
-                <th width="30%">Nazwa Produktu</th>
-                <th width="10%">Ilość</th>
-                <th width="13%">Cena</th>
-                <th width="10%">Całkowity Koszt</th>
-                <th width="17%">Usuń z Koszyka</th>
-            </tr>
-
-            <?php
-                if(!empty($_SESSION["cart"])){
-                    $total = 0;
-                    foreach ($_SESSION["cart"] as $key => $value) {
-                        ?>
-                        <tr>
-                            <td><?php echo $value["item_name"]; ?></td>
-                            <td><?php echo $value["item_quantity"]; ?></td>
-                            <td>zł <?php echo $value["product_price"]; ?></td>
-                            <td>
-                                zł <?php echo number_format($value["item_quantity"] * $value["product_price"], 2); ?></td>
-                            <td><a href="Cart.php?action=delete&id=<?php echo $value["product_id"]; ?>"><span
-                                        class="text-danger">Usuń z Koszyka</span></a></td>
-
-                        </tr>
-                        <?php
-                        $total = $total + ($value["item_quantity"] * $value["product_price"]);
-                    }
-                        ?>
-                        <tr>
-                            <td colspan="3" align="right">Total</td>
-                            <th align="right">zł <?php echo number_format($total, 2); ?></th>
-                            <td></td>
-                        </tr>
-                        <?php
-                    }
-                ?>
-            </table>
-        </div>
-
+  if($resultHowManyInCart['SUM(cartitem.Quantity)'] != 0) : 
+?>
+    <div class = "my-4 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
+      PODSUMOWANIE
     </div>
-
-
-</body>
-</html>
+  <table class="table table-dark">
+  <thead >
+    <tr style="text-align: center;">
+      <th scope="col">#</th>
+      <th scope="col">Zdjęcie</th>
+      <th scope="col">Nazwa produktu</th>
+      <th scope="col">Ilość</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Wartość</th>
+      <th scope="col">Usuń</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $i = 1;
+    $total = 0;
+    while($result = mysqli_fetch_assoc($response)){
+      echo "<form action=\"logic/deleteFromCart.php\" method=\"post\">";
+      echo "<tr style=\"text-align: center;\">";
+      echo "<th style=\"vertical-align: middle; text-align: center;\" scope=\"row\">".($i)."</th>";
+      echo "<td style=\"width:16.66%;\"><img class=\"img-thumbnail\" style=\"width:100%;\" src=\"productphotos/".$result['Photos']."\" alt=\"Product photo\"></td>";
+      echo "<td style=\"vertical-align: middle;\">".$result['Title']."</td>";
+      echo "<td style=\"vertical-align: middle;\">".$result['Quantity']."</td>";
+      echo "<td style=\"vertical-align: middle;\">".$result['Price']."zł</td>";
+      echo "<td style=\"vertical-align: middle;\">".$result['Price']*$result['Quantity']."zł</td>";
+      echo "<input type=\"hidden\" name=\"ProductID\" value=\"".$result['ID']."\">";
+      echo "<td style=\"vertical-align: middle;\"><button type=submit style=\"padding: 0;border: none;background: none;\" href=\"#\" title=\"Delete\"><i style=\"color: red;\" class=\"material-icons\">&#xE872;</i></button></td>";
+      echo "</tr>";
+      echo "</form>";
+      $total += $result['Price']*$result['Quantity'];
+      $i++;
+    }
+    ?>
+    <form action="logic/addOrder.php" method="post">
+      <tr style="text-align: center; vertical-align: middle;">
+        <td colspan="4"></td>
+        <td style="text-align: center; vertical-align: middle;">Razem do Zapłaty: </td>
+        <td style="text-align: center; vertical-align: middle;"><?php echo $total." zł" ?></td>
+        <td><button class="btn btn-primary  m-2" type="submit">Zamawiam</button></td>
+      </tr>
+    </form>
+  </tbody>
+</table>
+<?php endif; ?>
+<?php if($resultHowManyInCart['SUM(cartitem.Quantity)'] == 0) : ?>
+<!--Jeżeli nie ma produktów w koszyku -->
+<div class = "m-5 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
+      Dodaj produkt aby pojawił się w koszyku
+</div>
+<?php endif; ?>
+  </div>
 
   <!-- Footer -->
   <footer class="py-4">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-?>
+require_once "../logic/connect.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +17,10 @@ session_start();
   <link href="../css/shop-item.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <?php include "../static/header.php" ?>
-<script src="../js/adminPanelHeaderScript.js"></script>
+<script src="../js/userPanelHeaderScript.js"></script>
 
 <!--Produkty -->
 <div class="container">
@@ -32,7 +31,6 @@ session_start();
   <script>
     document.getElementById('userPanelCategoriesLink4').className = "list-group-item active"; 
   </script>
-  
 
   <div class="col-lg-9">
 
@@ -42,22 +40,15 @@ session_start();
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">REKLAMACJE / ZWROTY</h2>
+              <h2 class="card-title" style="color: #7d9801">KONTO UŻYTKOWNIKA</h2>
           </div>
         </div>
-		Zareklamuj swój produkt lub zwróć w ciągu 14 dni. <br /> <br />
-        Nazwa klienta, id reklamowanego produktu, powód.
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
 
       </div>
       
       
       <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
+
         </div> 
         <div class="modal" tabindex="-1" role="dialog" id="formModal">
           <form>
@@ -85,21 +76,6 @@ session_start();
           </form>
       </div> 
 
-      <div class="collapse" id="collapse1">
-        
-        <div class="card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-          <hr>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-          <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-        </div>
-
-      </div>
-
     </div>
     
   </div>
@@ -112,10 +88,10 @@ session_start();
       <p class="m-0 text-center text-white">Copyright &copy; Gruszka.net 2019</p>
     </div>
   </footer>
-  <script src="../https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/c419d26f2c.js" crossorigin="anonymous"></script>
 
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
