@@ -38,7 +38,14 @@ $response = mysqli_query($db,$query);
   <!--Produkty -->
   <div class="container mt-4">
     
-<?php if(isset($_SESSION['productsInCart'])) : ?>
+<?php 
+  $queryHowManyInCart = "SELECT SUM(cartitem.Quantity) FROM products, cartitem, cart WHERE cart.UserID = ".$_SESSION['id']." AND cartitem.CartID = cart.ID 
+  AND cartitem.ProductID = products.ID";
+  $respoonseHowManyInCart = mysqli_query($db,$queryHowManyInCart);
+  $resultHowManyInCart = mysqli_fetch_assoc($respoonseHowManyInCart);
+
+  if($resultHowManyInCart['SUM(cartitem.Quantity)'] != 0) : 
+?>
     <div class = "my-4 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
       PODSUMOWANIE
     </div>
@@ -85,7 +92,7 @@ $response = mysqli_query($db,$query);
   </tbody>
 </table>
 <?php endif; ?>
-<?php if(!isset($_SESSION['productsInCart'])) : ?>
+<?php if($resultHowManyInCart['SUM(cartitem.Quantity)'] == 0) : ?>
 <!--Jeżeli nie ma produktów w koszyku -->
 <div class = "m-5 col-lg-12" style="text-align: center; color: #7d9801; font-weight: bold; font-size: 4ch;">
       Dodaj produkt aby pojawił się w koszyku
