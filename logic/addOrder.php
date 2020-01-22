@@ -30,7 +30,7 @@ while($resultHowManyInCart = mysqli_fetch_assoc($responseHowManyInCart))
     //Ilość w koszyku przekracza ilość na stanie(alert itp)
     $tooMuch = true;
 
-    
+    $_SESSION['tooMuchAlert'] = true;
   }
 }
 if(!$tooMuch){
