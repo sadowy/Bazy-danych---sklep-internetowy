@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2020, 20:10
+-- Czas generowania: 22 Sty 2020, 22:04
 -- Wersja serwera: 10.4.8-MariaDB
 -- Wersja PHP: 7.3.10
 
@@ -69,7 +69,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`ID`, `UserID`) VALUES
-(23, 16);
+(27, 16);
 
 -- --------------------------------------------------------
 
@@ -89,8 +89,7 @@ CREATE TABLE `cartitem` (
 --
 
 INSERT INTO `cartitem` (`ID`, `CartID`, `ProductID`, `Quantity`) VALUES
-(58, 23, 1, 1),
-(59, 23, 12, 3);
+(63, 27, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +132,11 @@ CREATE TABLE `orderitem` (
 
 INSERT INTO `orderitem` (`ID`, `OrderID`, `ProductID`, `Quantity`) VALUES
 (32, 21, 1, 1),
-(33, 21, 2, 3);
+(33, 21, 2, 3),
+(34, 22, 1, 1),
+(35, 22, 12, 3),
+(36, 23, 1, 1),
+(37, 24, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -156,7 +159,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`ID`, `UserID`, `TimeStamp`, `City`, `Street`, `Postal`, `Phone`) VALUES
-(21, 15, '2020-01-22 19:07:37', '', '', 0, 0);
+(21, 15, '2020-01-22 19:07:37', '', '', 0, 0),
+(22, 16, '2020-01-22 19:45:12', '', '', 0, 0),
+(23, 16, '2020-01-22 19:55:09', '', '', 0, 0),
+(24, 16, '2020-01-22 19:55:42', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -181,7 +187,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ID`, `CategoryID`, `BrandID`, `Title`, `Quantity`, `Price`, `Description`, `Photos`, `Tags`) VALUES
-(1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 33, 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', 'HPPavilion15.jpg', 'HP Pavilion laptop'),
+(1, 1, 1, 'HP Pavilion 15 i5-8265U/16GB/256', 30, 2899, 'HP Pavilion 15 i5-8265U/16GB/256/Win10', 'HPPavilion15.jpg', 'HP Pavilion laptop'),
 (2, 1, 3, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 44, 3599, 'Apple MacBook Air i5/8GB/128GB/HD 6000/Mac OS', 'MacBookAirI5.jpg', 'Apple Macbook Laptop'),
 (3, 1, 6, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 47, 4499, 'Lenovo Legion Y540-17 i7-9750H/8GB/256 GTX1660Ti', 'LenovoY540.jpg', 'Lenovo Legion Laptop'),
 (4, 3, 3, 'Apple iPhone Xr 64GB Black', 53, 2899, 'Apple iPhone Xr 64GB Black', 'IphoneXr64.jpg', 'Iphone Apple Smartfon Telefon'),
@@ -192,7 +198,7 @@ INSERT INTO `products` (`ID`, `CategoryID`, `BrandID`, `Title`, `Quantity`, `Pri
 (9, 2, 4, 'Telewizor Sony KD-55XF8505', 5, 3579, 'Telewizor Sony KD-55XF8505', 'SonyBraviaKD-55XF8505.jpg', 'Telewizor Sony'),
 (10, 4, 1, 'Drukarka HP LaserJet Pro M15w', 5, 279, 'Drukarka HP LaserJet Pro M15w', 'HPLaserJet ProM15w.jpg', 'Drukarka HP'),
 (11, 1, 9, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 44, 6999, 'Dell XPS 13 7390 i5-10210U/8GB/256/Win10', 'DellXPS13.jpg', 'Laptop Dell XPS'),
-(12, 1, 5, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 32, 5199, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 'LGGram.jpg', 'Laptop LG Gram'),
+(12, 1, 5, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 29, 5199, 'LG Gram 17Z990 i7-8565U/8GB/512/Win10', 'LGGram.jpg', 'Laptop LG Gram'),
 (13, 5, 10, 'Razer BlackWidow Chroma V2 Orange Switch', 5, 449, 'Razer BlackWidow Chroma V2 Orange Switch', 'RazerBlackwidowV2.jpg', 'Klawiatura Razer BlackWidow'),
 (14, 5, 7, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 5, 3299, 'MSI GeForce RTX 2080 GAMING X TRIO 8GB GDDR', 'RTX2080MSI.jpg', 'Karta Graficzna MSI GeForce RTX'),
 (15, 5, 8, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 5, 2399, 'Palit GeForce RTX 2070 SUPER JetStream 8GB GDDR6', 'RTX2070PalitSuper.jpg', 'Karta Graficzna Geforce Palit RTX'),
@@ -334,13 +340,13 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT dla tabeli `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT dla tabeli `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT dla tabeli `categories`
@@ -352,13 +358,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT dla tabeli `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT dla tabeli `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT dla tabeli `products`

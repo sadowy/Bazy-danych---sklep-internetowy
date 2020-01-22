@@ -79,5 +79,6 @@ if(!$tooMuch){
 
 }
 
-header('Location: ../index.php');
+header('Location: ../orderDetails.php');
 
+?>
