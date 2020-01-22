@@ -32,5 +32,6 @@
                     Postal = \"".$userAddress['Postal']."\", Phone =  \"".$userAddress['Phone']."\"
                                   WHERE orders.ID = ".$orderID['ID'];
    $hmm = mysqli_query($db,$queryAddDetails); 
+   $_SESSION['addedOrderAlert'] = true;
 header('Location: ../index.php');
 ?>
