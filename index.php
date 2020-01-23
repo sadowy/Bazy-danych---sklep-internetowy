@@ -27,7 +27,6 @@ require_once "logic/connect.php";
 <?php include "static/addedReviewAlert.php" ?>
 <?php include "static/addedToCartAlert.php" ?>
 <?php include "static/addedOrderAlert.php" ?>
-<?php include "static/itemsInCartExceededStockAlert.php" ?>
 
   <!--Produkty -->
   <div class="container">

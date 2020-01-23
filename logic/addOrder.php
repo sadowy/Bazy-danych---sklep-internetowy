@@ -29,8 +29,8 @@ while($resultHowManyInCart = mysqli_fetch_assoc($responseHowManyInCart))
   if($resultHowManyOnStock['Quantity'] < $resultHowManyInCart['Quantity']){
     //Ilość w koszyku przekracza ilość na stanie(alert itp)
     $tooMuch = true;
-
     $_SESSION['tooMuchAlert'] = true;
+    header('Location: ../cart.php');
   }
 }
 if(!$tooMuch){
@@ -81,11 +81,12 @@ if(!$tooMuch){
 
     mysqli_query($db, $quersonDeleteCartItem);
     mysqli_query($db, $quersonDeleteCart);
-                 
+
+    header('Location: ../orderDetails.php');
   }
 
 }
 
-header('Location: ../orderDetails.php');
+
 
 ?>
