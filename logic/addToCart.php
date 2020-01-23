@@ -24,6 +24,10 @@
     $selectCart = "SELECT ID FROM cart WHERE UserID = ".$_POST['UserID']."";
     $result = mysqli_query($db,$selectCart);
     $CartID = mysqli_fetch_assoc($result);
+    //Przypisanie ID koszyka danego uzytkownika do zmiennej sesyjnej 
+    if(!isset($_SESSION['userCartID'])){
+      $_SESSION['userCartID'] = $CartID['ID'];
+    }
   }
   //Sprawdz czy user ma dodany juz taki produkt do carta
   $query1 = "SELECT cartitem.ID, cartitem.Quantity FROM cartitem, products, users, cart WHERE cartitem.ProductID = products.ID AND cartitem.CartID = cart.ID AND cart.UserID = ".$_POST['UserID']." AND cart.UserID = users.ID AND cartitem.ProductID = ".$_POST['ProductID'];

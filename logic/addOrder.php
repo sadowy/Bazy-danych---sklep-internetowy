@@ -29,8 +29,6 @@ while($resultHowManyInCart = mysqli_fetch_assoc($responseHowManyInCart))
   if($resultHowManyOnStock['Quantity'] < $resultHowManyInCart['Quantity']){
     //Ilość w koszyku przekracza ilość na stanie(alert itp)
     $tooMuch = true;
-    $_SESSION['tooMuchAlert'] = true;
-    header('Location: ../cart.php');
   }
 }
 if(!$tooMuch){
@@ -70,23 +68,17 @@ if(!$tooMuch){
     $querySubractStockQuantity = "UPDATE products SET Quantity = ".$howManyAfterOrder." 
                                   WHERE products.ID = ".$resultInfoAboutProducts['ProductID'];
     mysqli_query($db,$querySubractStockQuantity);   
-
-    //pobranie ID koszyka danego uzytkownika 
-    $selectCart = "SELECT ID FROM cart WHERE UserID = ".$_SESSION['id'];
-    $results = mysqli_query($db,$selectCart);
-    $CartID = mysqli_fetch_assoc($results);
     
-    $quersonDeleteCartItem = "DELETE FROM cartitem WHERE CartID = ".$CartID['ID'];
-    $quersonDeleteCart = "DELETE FROM cart WHERE ID = ".$CartID['ID'];
+    $quersonDeleteCartItem = "DELETE FROM cartitem WHERE CartID = ".$_SESSION['userCartID'];
+    $quersonDeleteCart = "DELETE FROM cart WHERE ID = ".$_SESSION['userCartID'];
 
     mysqli_query($db, $quersonDeleteCartItem);
     mysqli_query($db, $quersonDeleteCart);
-
-    header('Location: ../orderDetails.php');
+                 
   }
 
 }
 
-
+header('Location: ../orderDetails.php');
 
 ?>
