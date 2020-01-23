@@ -7,5 +7,6 @@
       <a id="adminPanelCategoriesLink3" href="products.php" class="list-group-item" >Produkty</a>
       <a id="adminPanelCategoriesLink4" href="orders.php" class="list-group-item" >Zamówienia</a>
       <a id="adminPanelCategoriesLink5" href="complaints.php" class="list-group-item" >Reklamacje/zwroty</a>
+	  <a id="adminPanelCategoriesLink6" href="addProduct.php" class="list-group-item" >Dodaj Produkt</a>
     </div>
   </div>

@@ -33,7 +33,7 @@ require_once "../logic/connect.php";?>
     document.getElementById('adminPanelCategoriesLink4').className = "list-group-item active"; 
   </script>
 
-  <div class="col-lg-9">
+  <div class="col-lg-15">
 
   <!--Zdjęcie i opis produktu-->
     <div class="card my-4">
@@ -44,8 +44,65 @@ require_once "../logic/connect.php";?>
               <h2 class="card-title" style="color: #7d9801">ZAMÓWIENIA</h2>
           </div>
         </div>
-        Tabela z zamówieniem klienta, id produktów, <p>
-        sposób dostawy, kwota do zapłacenia.
+  <div class="card">
+	<div class="card body">
+				
+<?php
+	$connection = mysqli_connect("localhost", "root", "","");
+	$db = mysqli_select_db($connection,'gruszka');
+					
+	$query = "SELECT * FROM orders";
+	$query_run = mysqli_query($connection, $query);
+?>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID Operacji</th>
+      <th scope="col">ID Użytkownika</th>
+      <th scope="col">Czas Operacji</th>
+	  <th scope="col">Email</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+	  <th scope="col">Numer Telefonu</th>
+      <th scope="col">Miasto</th>
+	  <th scope="col">Ulica</th>
+	  <th scope="col">Kod Pocztowy</th>
+    </tr>
+  </thead>
+  <?php
+	if($query_run)
+		{
+			foreach($query_run as $row)
+		{
+	?>
+	
+  <tbody>
+    <tr>
+      <td> <?php echo $row['ID']; ?> </td>
+      <td> <?php echo $row['UserID']; ?> </td>
+      <td> <?php echo $row['TimeStamp']; ?> </td>
+      <td> <?php echo $row['Mail']; ?> </td>
+	   <td> <?php echo $row['Name']; ?> </td>
+      <td> <?php echo $row['Surname']; ?> </td>
+	  <td> <?php echo $row['Phone']; ?> </td>
+	  <td> <?php echo $row['City']; ?> </td>
+	  <td> <?php echo $row['Street']; ?> </td>
+	  <td> <?php echo $row['Postal']; ?> </td>
+	  
+    </tr>
+  </tbody>
+  <?php
+	}
+}
+		else
+		{
+			echo "Nie znaleziono zamówienia";
+		}
+	?>
+</table>
+</div>
+</div>
         <br>
         <br>
         <br>

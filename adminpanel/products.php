@@ -34,7 +34,7 @@ session_start();
   </script>
   
 
-  <div class="col-lg-9">
+  <div class="col-lg-30">
 
   <!--Zdjęcie i opis produktu-->
     <div class="card my-4">
@@ -45,52 +45,64 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">PRODUKTY</h2>
           </div>
         </div>
-
-	  <form enctype="multipart/form-data" action="addProduct.php" method="post">
-
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="CategoryID">ID Kategorii :</label>
-      <input type="number" class="form-control" name="CategoryID" placeholder="Kategoria">
-    </div>
-    <div class="form-group col-md-2">
-      <label for="BrandID">ID Marki :</label>
-      <input type="number" class="form-control" name="BrandID" placeholder="Marka">
-    </div>
-  </div>
-		
-		<div class="form-group">
-		<label for="Title">Tytuł :</label>
-        <br> <input type="text" class="form-control" name="Title" placeholder="Podaj tytuł wystawianego przedmiotu"><br/></div>
-  
-  <div class="form-row">
-		<div class="form-group col-md-2">
-      <label for="Price">Cena :</label>
-      <input type="number" class="form-control" name="Price" placeholder="Bogactwo">
-    </div>
-  </div>
-		 
-<h2 style="color: #7d9801">Dodaj nową Gruszkę</h2>
-   <div class="form-group">
-      <label for="Description">Opis :</label>
-      <textarea class="form-control" rows="20" name="Description"></textarea><br>
-      		
-	<div class="form-group">
-		<label for="image">Zdjęcie :</label>
-		<br> <input type="file" class="form-control-file" name="image"><br/></div>	
-	<div class="form-group">
-		<label for="Tags">Tagi :</label>
-		<br> <input type="text" class="form-control" name="Tags" placeholder="Podaj Tagi dla łatwiejszego wyszukiwania przedmiotu"><br/></div>
-        <br>
-        <br>
-        <button type="submit" name="upload" class="btn btn-primary">Dodaj Produkt</button>
-        <br>
-        <br>
-        
-		</form>
-      </div>
       
-      
+	  <div class="card">
+	<div class="card body">
+	
+      <?php
+	$connection = mysqli_connect("localhost", "root", "","");
+	$db = mysqli_select_db($connection,'gruszka');
+					
+	$query = "SELECT * FROM products";
+	$query_run = mysqli_query($connection, $query);
+	$pathx = "../productphotos/";
+?>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+	  <th scope="col">Zdjęcie</th>
+      <th scope="col">ID</th>
+      <th scope="col">Nr Kategorii</th>
+      <th scope="col">Nr Marki</th>
+      <th scope="col">Nazwa</th>
+	  <th scope="col">Ilość</th>
+	  <th scope="col">Cena</th>
+	  <th scope="col">Opis</th>
+	  <th scope="col">Tagi</th>
+    </tr>
+  </thead>
+  <?php
+	if($query_run)
+		{
+			foreach($query_run as $row)
+		{
+	?>
+	
+  <tbody>
+    <tr>
+	  <td> <?php echo '<img class="img-fluid" width="50" height="50" src="'.$pathx.$row["Photos"].'">'; ?> </td>
+      <td> <?php echo $row['ID']; ?> </td>
+      <td> <?php echo $row['CategoryID']; ?> </td>
+      <td> <?php echo $row['BrandID']; ?> </td>
+      <td> <?php echo $row['Title']; ?> </td>
+	  <td> <?php echo $row['Quantity']; ?> </td>
+	  <td> <?php echo $row['Price']; ?> </td>
+	  <td> <?php echo $row['Description']; ?> </td>
+	  <td> <?php echo $row['Tags']; ?> </td>
+    </tr>
+  </tbody>
+  <?php
+	}
+}
+		else
+		{
+			echo "Nie znaleziono produktów";
+		}
+	?>
+</table>
+</div>
+</div>
      
                 
               </div>
