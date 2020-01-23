@@ -1,4 +1,6 @@
 <div class="container">
+<div class="col-lg-12">
+
 <?php if(isset($_SESSION['addedToCart'])){
               if($_SESSION['addedToCart'] == true){
                 echo "<div class=\"alert alert-success col-12 mt-4\" role=\"alert\">";
@@ -13,4 +15,5 @@
             }
               
       ?>
+</div>
 </div>

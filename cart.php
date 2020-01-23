@@ -35,6 +35,8 @@ $response = mysqli_query($db,$query);
 ?>
 
 <?php include "static/header.php" ?>
+
+<?php include "logic/itemsInCartExceededStockAlert.php" ?>
   <!--Produkty -->
   <div class="container mt-4">
     
