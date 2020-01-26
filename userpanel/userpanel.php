@@ -45,46 +45,18 @@ require_once "../logic/connect.php";
           </div>
         </div>
        
-         <a href="changeform.php">Zmień hasło</a><p>
+        <a href="changeForm.php">Zmień hasło</a>
         <br>
+        <a href="changeAddress.php">Zmień adres</a>
         <br>
-        <br>
+        <a href="changeContact.php">Zmień dane kontaktowe</a>
         <br>
         <br>
         
 
       </div>
       
-      
-      <div class="d-flex button-group justify-content-between" style="background-color: #47484b">
-
-        </div> 
-        <div class="modal" tabindex="-1" role="dialog" id="formModal">
-          <form>
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Napisz swoją opinię</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Wyślij opinię</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-          </form>
-      </div> 
-
+  
     </div>
     
   </div>

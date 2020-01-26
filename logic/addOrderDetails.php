@@ -34,6 +34,10 @@
   
   $queryAddDetails = "UPDATE orders SET City = \"".$userAddress['City']."\", Street = \"".$userAddress['Street']."\", 
                     Postal = \"".$userAddress['Postal']."\", Phone =  \"".$userAddress['Phone']."\", Payment = \"".$userAddress[0]."\", Delivery = \"".$userAddress[1]."\"
+
+  $queryAddDetails = "UPDATE orders SET City = \"".$userAddress['City']."\", Street = \"".$userAddress['Street']."\", 
+                    Postal = \"".$userAddress['Postal']."\", Phone =  \"".$userAddress['Phone']."\"
+
                                   WHERE orders.ID = ".$orderID['ID'];
    $hmm = mysqli_query($db,$queryAddDetails); 
    $_SESSION['addedOrderAlert'] = true;
