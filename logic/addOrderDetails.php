@@ -13,29 +13,29 @@
   $selectOrder = "SELECT ID FROM `orders` WHERE UserID = ".$_SESSION['id']." ORDER BY TimeStamp DESC LIMIT 1 ";
   $resultOrder = mysqli_query($db,$selectOrder);
   $orderID = mysqli_fetch_assoc($resultOrder);
+  
 
   //Jezeli opcja pobierz z adresu podanego przy rejestracji zaznaczona 
   if(isset($_POST['orderRegistrationAdress']) && $_POST['orderRegistrationAdress'] = 'on'){
-    $selectUserAddress = "SELECT Mail, Name, Surname, Phone, City, Street, Postal FROM `users` WHERE ID = ".$_SESSION['id'];
+    $selectUserAddress = "SELECT Phone, City, Street, Postal FROM `users` WHERE ID = ".$_SESSION['id'];
     $resultUserAddress = mysqli_query($db,$selectUserAddress);
     $userAddress = mysqli_fetch_assoc($resultUserAddress);
   }
   else{
     $userAddress = [
-	    "Mail" => $_POST['orderMail'],
-        "Name" => $_POST['orderName'],
-        "Surname" => $_POST['orderSurname'],
         "Phone" => $_POST['orderPhone'],
         "City" => $_POST['orderCity'],
         "Street" => $_POST['orderStreet'],
         "Postal" => $_POST['orderPostal']
     ];
   }
-  $queryAddDetails = "UPDATE orders SET  City = \"".$userAddress['City']."\", Street = \"".$userAddress['Street']."\", 
-                    Postal = \"".$userAddress['Postal']."\", Phone =  \"".$userAddress['Phone']."\",
-					Mail = \"".$userAddress['Mail']."\", Name = \"".$userAddress['Name']."\",
-					Surname = \"".$userAddress['Surname']."\"
+  array_push($userAddress, $_POST['orderPaymentForm'],  $_POST['orderDeliveryForm']);
+
+  
+  $queryAddDetails = "UPDATE orders SET City = \"".$userAddress['City']."\", Street = \"".$userAddress['Street']."\", 
+                    Postal = \"".$userAddress['Postal']."\", Phone =  \"".$userAddress['Phone']."\", Payment = \"".$userAddress[0]."\", Delivery = \"".$userAddress[1]."\"
                                   WHERE orders.ID = ".$orderID['ID'];
    $hmm = mysqli_query($db,$queryAddDetails); 
+   $_SESSION['addedOrderAlert'] = true;
 header('Location: ../index.php');
 ?>

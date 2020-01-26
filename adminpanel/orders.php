@@ -51,23 +51,29 @@ require_once "../logic/connect.php";?>
 	$connection = mysqli_connect("localhost", "root", "","");
 	$db = mysqli_select_db($connection,'gruszka');
 					
-	$query = "SELECT * FROM orders";
+	$query = "SELECT  users.Name, users.Surname, orders.TimeStamp, orders.City, orders.Street, orders.Postal, orders.Phone, orders.Payment, orders.Delivery, products.Title, orderitem.Quantity 
+FROM users, orders, orderitem, products
+WHERE orders.UserID = users.ID 
+AND orderitem.OrderID = orders.ID
+AND orderitem.ProductID = products.ID ";
 	$query_run = mysqli_query($connection, $query);
 ?>
 
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID Operacji</th>
-      <th scope="col">ID Użytkownika</th>
-      <th scope="col">Czas Operacji</th>
-	  <th scope="col">Email</th>
+      
       <th scope="col">Imię</th>
       <th scope="col">Nazwisko</th>
+	  <th scope="col">Czas Operacji</th>
 	  <th scope="col">Numer Telefonu</th>
       <th scope="col">Miasto</th>
 	  <th scope="col">Ulica</th>
 	  <th scope="col">Kod Pocztowy</th>
+	  <th scope="col">Nazwa Produktu</th>
+	  <th scope="col">Ilość</th>
+	  <th scope="col">Forma Zapłaty</th>
+	  <th scope="col">Forma Dostawy</th>
     </tr>
   </thead>
   <?php
@@ -79,16 +85,18 @@ require_once "../logic/connect.php";?>
 	
   <tbody>
     <tr>
-      <td> <?php echo $row['ID']; ?> </td>
-      <td> <?php echo $row['UserID']; ?> </td>
-      <td> <?php echo $row['TimeStamp']; ?> </td>
-      <td> <?php echo $row['Mail']; ?> </td>
-	   <td> <?php echo $row['Name']; ?> </td>
+     
+	  <td> <?php echo $row['Name']; ?> </td>
       <td> <?php echo $row['Surname']; ?> </td>
+	  <td> <?php echo $row['TimeStamp']; ?> </td>
 	  <td> <?php echo $row['Phone']; ?> </td>
 	  <td> <?php echo $row['City']; ?> </td>
 	  <td> <?php echo $row['Street']; ?> </td>
 	  <td> <?php echo $row['Postal']; ?> </td>
+	  <td> <?php echo $row['Title']; ?> </td>
+	  <td> <?php echo $row['Quantity']; ?> </td>
+	  <td> <?php echo $row['Payment']; ?> </td>
+	  <td> <?php echo $row['Delivery']; ?> </td>
 	  
     </tr>
   </tbody>

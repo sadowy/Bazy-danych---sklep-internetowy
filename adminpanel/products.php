@@ -34,7 +34,7 @@ session_start();
   </script>
   
 
-  <div class="col-lg-30">
+  <div class="col-lg-12">
 
   <!--Zdjęcie i opis produktu-->
     <div class="card my-4">

@@ -40,10 +40,34 @@ require_once "../logic/connect.php";?>
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">KONTO UŻYTKOWNIKA</h2>
+              <h2 class="card-title" style="color: #7d9801">Reklamacje i Zwroty</h2>
           </div>
         </div>
+	  
+	    <form enctype="multipart/form-data" action="addingComplaint.php" method="post">
 
+<div class="form-group">
+		<label for="Title">ID Zamówienia :</label>
+        <br> <input type="number" class="form-control" name="OrderID" placeholder="Podaj ID swojego zamówienia"><br/></div>
+		
+		<div class="form-group">
+		<label for="Title">Tytuł :</label>
+        <br> <input type="text" class="form-control" name="Title" placeholder="Podaj nazwę zakupionego przedmiotu"><br/></div>
+		 
+   <div class="form-group">
+      <label for="Description">Opisz krótko swój problem :</label>
+      <textarea class="form-control" rows="20" name="Description"></textarea><br>
+      		
+	<div class="form-group">
+		<label for="image">Dodaj zdjęcie opisywanego problemu :</label>
+		<br> <input type="file" class="form-control-file" name="image"><br/></div>	
+        <br>
+        <br>
+        <button type="submit" name="complaint" class="btn btn-primary">Wyślij Reklamacje</button>
+        <br>
+        <br>
+        
+		</form>
       </div>
       
       

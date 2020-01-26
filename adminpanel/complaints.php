@@ -45,7 +45,53 @@ session_start();
               <h2 class="card-title" style="color: #7d9801">REKLAMACJE / ZWROTY</h2>
           </div>
         </div>
-        Nazwa klienta, id reklamowanego produktu, powód.
+        <div class="card">
+	<div class="card body">
+<?php
+	$connection = mysqli_connect("localhost", "root", "","");
+	$db = mysqli_select_db($connection,'gruszka');
+					
+	$query = "SELECT * FROM complaints";
+	$query_run = mysqli_query($connection, $query);
+?>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      
+	  <th scope="col">ID Zamówienia</th>
+	  <th scope="col">Nazwa Produktu</th>
+	  <th scope="col">Opis Problemu</th>
+	  
+    </tr>
+  </thead>
+  <?php
+	if($query_run)
+		{
+			foreach($query_run as $row)
+		{
+	?>
+	
+  <tbody>
+    <tr>
+	
+	<td> <?php echo $row['OrderID']; ?> </td>
+	  <td> <?php echo $row['Title']; ?> </td>
+	  <td> <?php echo $row['Description']; ?> </td>
+	  
+    </tr>
+  </tbody>
+  <?php
+	}
+}
+		else
+		{
+			echo "Chyba nikt się nie skarży :D";
+		}
+	?>
+</table>
+</div>
+</div>
         <br>
         <br>
         <br>

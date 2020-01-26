@@ -81,7 +81,7 @@ require_once "logic/connect.php";
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Potwierdzam i zamawiam</button>
+        <button type="submit" name="addOrderAll" class="btn btn-primary" style="background-color: #7d9801;border: #7d9801;">Potwierdzam i zamawiam</button>
     </form>
   </div>
 

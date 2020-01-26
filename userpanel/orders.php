@@ -40,10 +40,66 @@ require_once "../logic/connect.php";?>
       <div class="card-body" style="background-color: #47484b">
         <div class="d-flex justify-content-between ">
           <div class="d-flex" style="align-items: center;justify-content: left;">
-              <h2 class="card-title" style="color: #7d9801">KONTO UŻYTKOWNIKA</h2>
+              <h2 class="card-title" style="color: #7d9801">Zamówienia</h2>
           </div>
         </div>
+		  <div class="card">
+	<div class="card body">
+<?php
+	$connection = mysqli_connect("localhost", "root", "","");
+	$db = mysqli_select_db($connection,'gruszka');
+					
+	$query = "SELECT orders.ID, orders.TimeStamp, orders.Payment, orders.Delivery, products.Title, orderitem.Quantity 
+FROM users, orders, orderitem, products
+WHERE orders.UserID = users.ID 
+AND orderitem.OrderID = orders.ID
+AND orderitem.ProductID = products.ID
+AND orders.UserID = ".$_SESSION['id'];
+	$query_run = mysqli_query($connection, $query);
+?>
 
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      
+	  <th scope="col">ID Zamówienia</th>
+	  <th scope="col">Czas Operacji</th>
+	  <th scope="col">Nazwa Produktu</th>
+	  <th scope="col">Ilość</th>
+	  <th scope="col">Forma Zapłaty</th>
+	  <th scope="col">Forma Dostawy</th>
+    </tr>
+  </thead>
+  <?php
+	if($query_run)
+		{
+			foreach($query_run as $row)
+		{
+	?>
+	
+  <tbody>
+    <tr>
+	
+	<td> <?php echo $row['ID']; ?> </td>
+	  <td> <?php echo $row['TimeStamp']; ?> </td>
+	  <td> <?php echo $row['Title']; ?> </td>
+	  <td> <?php echo $row['Quantity']; ?> </td>
+	  <td> <?php echo $row['Payment']; ?> </td>
+	  <td> <?php echo $row['Delivery']; ?> </td>
+	  
+    </tr>
+  </tbody>
+  <?php
+	}
+}
+		else
+		{
+			echo "Nie znaleziono zamówienia";
+		}
+	?>
+</table>
+</div>
+</div>
       </div>
       
       
